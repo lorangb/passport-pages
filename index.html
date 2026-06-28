@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Passport Pages — Travel Books That Make Kids Curious</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & BASE ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'DM Sans',sans-serif;color:#1B1B2F;background:#FAF8F5;line-height:1.6;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+
+/* ===== COLORS ===== */
+:root{
+  --navy:#1B2A4A;
+  --navy-light:#2C4270;
+  --terracotta:#D4735E;
+  --terracotta-light:#E89582;
+  --gold:#D4A84B;
+  --gold-light:#E8C57A;
+  --cream:#FAF8F5;
+  --cream-dark:#F0EAE0;
+  --sage:#8CB38A;
+  --sage-light:#B5D4B3;
+  --slate:#6B7B8D;
+  --white:#FFFFFF;
+  --text:#1B1B2F;
+  --text-light:#5A6778;
+  --radius:12px;
+  --shadow:0 4px 24px rgba(27,42,74,0.08);
+  --shadow-lg:0 12px 48px rgba(27,42,74,0.12);
+}
+
+/* ===== NAV ===== */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,248,245,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(27,42,74,0.06)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--navy)}
+.nav-logo svg{width:36px;height:36px}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{font-size:0.875rem;font-weight:500;color:var(--text-light);transition:color 0.2s;text-transform:uppercase;letter-spacing:0.06em}
+.nav-links a:hover{color:var(--navy)}
+.nav-cta{background:var(--terracotta);color:var(--white)!important;padding:8px 20px;border-radius:100px;font-size:0.8rem!important;font-weight:600!important;transition:transform 0.2s,box-shadow 0.2s}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(212,115,94,0.3)!important}
+.nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.nav-toggle span{width:24px;height:2px;background:var(--navy);border-radius:2px;transition:0.3s}
+
+/* ===== HERO ===== */
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 24px 80px;position:relative;overflow:hidden;background:linear-gradient(135deg, var(--navy) 0%, #1f3559 50%, #2a4370 100%)}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 30%, rgba(212,168,75,0.08) 0%, transparent 50%),radial-gradient(circle at 80% 70%, rgba(212,115,94,0.06) 0%, transparent 50%);pointer-events:none}
+.hero-particles{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.hero-particles span{position:absolute;width:4px;height:4px;background:rgba(255,255,255,0.08);border-radius:50%;animation:float 20s infinite}
+.hero-particles span:nth-child(1){top:10%;left:10%;animation-delay:0s;width:6px;height:6px}
+.hero-particles span:nth-child(2){top:30%;left:70%;animation-delay:3s;width:3px;height:3px}
+.hero-particles span:nth-child(3){top:60%;left:20%;animation-delay:6s;width:5px;height:5px}
+.hero-particles span:nth-child(4){top:80%;left:80%;animation-delay:9s;width:4px;height:4px}
+.hero-particles span:nth-child(5){top:20%;left:50%;animation-delay:12s;width:3px;height:3px}
+.hero-particles span:nth-child(6){top:70%;left:40%;animation-delay:15s;width:5px;height:5px}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-30px) rotate(180deg)}}
+.hero-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.hero-badge{display:inline-block;padding:6px 16px;background:rgba(212,168,75,0.15);border:1px solid rgba(212,168,75,0.3);border-radius:100px;color:var(--gold-light);font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:20px}
+.hero h1{font-family:'DM Serif Display',serif;font-size:3.5rem;line-height:1.1;color:var(--white);margin-bottom:20px}
+.hero h1 em{color:var(--gold-light);font-style:italic}
+.hero p{font-size:1.15rem;color:rgba(255,255,255,0.78);max-width:480px;margin-bottom:36px;line-height:1.7}
+.hero-buttons{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:var(--terracotta);color:var(--white)!important;border-radius:100px;font-weight:600;font-size:0.95rem;transition:all 0.3s;border:none;cursor:pointer}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(212,115,94,0.35)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:rgba(255,255,255,0.08);color:var(--white)!important;border-radius:100px;font-weight:500;font-size:0.95rem;border:1px solid rgba(255,255,255,0.2);transition:all 0.3s;cursor:pointer}
+.btn-secondary:hover{background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.3)}
+.hero-visual{position:relative}
+.hero-book{position:relative;background:var(--terracotta);border-radius:var(--radius);overflow:hidden;aspect-ratio:3/4;max-width:380px;margin-left:auto;box-shadow:var(--shadow-lg);transform:perspective(800px) rotateY(-8deg) rotateX(4deg);transition:transform 0.5s}
+.hero-book:hover{transform:perspective(800px) rotateY(-4deg) rotateX(2deg)}
+.hero-book-cover{position:absolute;inset:0;background:linear-gradient(135deg, #D4735E 0%, #C06050 100%);padding:36px;display:flex;flex-direction:column;justify-content:center}
+.hero-book-cover .age-badge{display:inline-block;padding:4px 12px;background:rgba(255,255,255,0.15);border-radius:100px;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.85);margin-bottom:16px;align-self:flex-start}
+.hero-book-cover h3{font-family:'DM Serif Display',serif;font-size:1.6rem;color:var(--white);line-height:1.2;margin-bottom:8px}
+.hero-book-cover p{font-size:0.85rem;color:rgba(255,255,255,0.75);line-height:1.5}
+.hero-book-cover .location{margin-top:auto;padding-top:20px;border-top:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;gap:8px;font-size:0.8rem;color:rgba(255,255,255,0.7)}
+.hero-book-stats{position:absolute;bottom:-16px;right:-16px;background:var(--white);border-radius:var(--radius);padding:16px 20px;box-shadow:var(--shadow-lg);display:flex;gap:24px}
+.hero-book-stats div{text-align:center}
+.hero-book-stats .num{font-family:'DM Serif Display',serif;font-size:1.3rem;color:var(--navy);display:block}
+.hero-book-stats .label{font-size:0.7rem;color:var(--slate);text-transform:uppercase;letter-spacing:0.05em}
+
+/* ===== SECTIONS COMMON ===== */
+.section{padding:100px 24px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-label{display:inline-block;padding:4px 14px;background:rgba(212,115,94,0.08);border-radius:100px;color:var(--terracotta);font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px}
+.section h2{font-family:'DM Serif Display',serif;font-size:2.5rem;color:var(--navy);line-height:1.15;margin-bottom:16px}
+.section h2 .highlight{color:var(--terracotta);font-style:italic}
+.section > .section-inner > p.subtitle{font-size:1.1rem;color:var(--text-light);max-width:600px;line-height:1.7;margin-bottom:48px}
+
+/* ===== AGE LEVELS ===== */
+.age-levels{background:var(--white)}
+.age-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.age-card{border-radius:var(--radius);overflow:hidden;background:var(--cream);transition:all 0.3s;position:relative}
+.age-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.age-card-visual{height:200px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.age-card-visual.explorer{background:linear-gradient(135deg, #8CB38A 0%, #7AA578 100%)}
+.age-card-visual.adventurer{background:linear-gradient(135deg, #D4A84B 0%, #C49A3E 100%)}
+.age-card-visual.trailblazer{background:linear-gradient(135deg, #1B2A4A 0%, #2C4270 100%)}
+.age-card-visual .age-icon{font-size:4rem;opacity:0.3;position:absolute;right:20px;bottom:20px}
+.age-card-body{padding:28px}
+.age-card-body .age-tag{display:inline-block;padding:3px 10px;border-radius:100px;font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px;background:var(--white)}
+.age-card-body .age-tag.explorer{color:var(--sage)}
+.age-card-body .age-tag.adventurer{color:var(--gold)}
+.age-card-body .age-tag.trailblazer{color:var(--navy)}
+.age-card-body h3{font-family:'DM Serif Display',serif;font-size:1.4rem;color:var(--navy);margin-bottom:4px}
+.age-card-body .age-range{font-size:0.85rem;color:var(--slate);margin-bottom:14px}
+.age-card-body p{font-size:0.9rem;color:var(--text-light);line-height:1.6;margin-bottom:16px}
+.age-features{display:flex;flex-direction:column;gap:6px}
+.age-features span{font-size:0.82rem;color:var(--text-light);display:flex;align-items:center;gap:8px}
+.age-features span::before{content:'\u2713';color:var(--sage);font-weight:700;font-size:0.75rem}
+
+/* ===== TIERS ===== */
+.tiers{background:var(--cream-dark)}
+.tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.tier-card{background:var(--white);border-radius:var(--radius);padding:32px;transition:all 0.3s;border:1px solid rgba(27,42,74,0.06)}
+.tier-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:transparent}
+.tier-card.featured{border:2px solid var(--gold);position:relative}
+.tier-card.featured::before{content:'Most Popular';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--white);padding:3px 16px;border-radius:100px;font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em}
+.tier-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:16px}
+.tier-icon.t1{background:rgba(212,115,94,0.1);color:var(--terracotta)}
+.tier-icon.t2{background:rgba(212,168,75,0.1);color:var(--gold)}
+.tier-icon.t3{background:rgba(140,179,138,0.1);color:var(--sage)}
+.tier-card h3{font-family:'DM Serif Display',serif;font-size:1.2rem;color:var(--navy);margin-bottom:4px}
+.tier-card .tier-desc{font-size:0.85rem;color:var(--slate);margin-bottom:16px}
+.tier-examples{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.tier-examples span{background:var(--cream);padding:4px 10px;border-radius:6px;font-size:0.75rem;color:var(--text-light)}
+.tier-card .price{font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--navy)}
+.tier-card .price small{font-size:0.8rem;color:var(--slate);font-family:'DM Sans',sans-serif}
+
+/* ===== SAMPLE SPREAD ===== */
+.sample-spread{background:var(--white);overflow:hidden}
+.spread-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.spread-visual{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/3;background:linear-gradient(135deg, #F0EAE0 0%, #E5DCCE 100%);padding:24px;display:flex;flex-direction:column;gap:8px}
+.spread-header{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.spread-header .dot{width:10px;height:10px;border-radius:50%}
+.spread-header .dot:nth-child(1){background:var(--terracotta)}
+.spread-header .dot:nth-child(2){background:var(--gold)}
+.spread-header .dot:nth-child(3){background:var(--sage)}
+.spread-header .title-placeholder{height:10px;width:120px;background:rgba(27,42,74,0.1);border-radius:4px;margin-left:auto}
+.spread-fact{background:var(--white);border-radius:8px;padding:16px 18px;box-shadow:0 2px 8px rgba(0,0,0,0.04);display:flex;gap:14px;align-items:flex-start}
+.spread-fact .emoji{font-size:1.5rem;flex-shrink:0;width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:var(--cream);border-radius:8px}
+.spread-fact .content h4{font-size:0.8rem;color:var(--navy);margin-bottom:2px}
+.spread-fact .content p{font-size:0.75rem;color:var(--text-light);line-height:1.4}
+.spread-fact:nth-child(3){border-left:3px solid var(--terracotta)}
+.spread-fact:nth-child(4){border-left:3px solid var(--gold)}
+.spread-fact:nth-child(5){border-left:3px solid var(--sage)}
+.spread-text h3{font-family:'DM Serif Display',serif;font-size:1.8rem;color:var(--navy);margin-bottom:16px}
+.spread-text p{color:var(--text-light);line-height:1.7;margin-bottom:20px}
+.spread-text .features{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.spread-text .features li{font-size:0.88rem;color:var(--text-light);display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--cream);border-radius:8px}
+.spread-text .features li .icon{font-size:1.1rem}
+
+/* ===== LANGUAGES ===== */
+.languages{background:var(--navy);color:var(--white);position:relative;overflow:hidden}
+.languages::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 80% 50%, rgba(212,168,75,0.06) 0%, transparent 50%)}
+.languages .section-inner{position:relative;z-index:1}
+.languages .section-label{background:rgba(255,255,255,0.08);color:var(--gold-light)}
+.languages h2{color:var(--white)}
+.languages h2 .highlight{color:var(--gold-light)}
+.languages p.subtitle{color:rgba(255,255,255,0.6)}
+.lang-cloud{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:800px;margin:0 auto}
+.lang-cloud span{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);padding:8px 20px;border-radius:100px;font-size:0.85rem;color:rgba(255,255,255,0.7);transition:all 0.2s;cursor:default}
+.lang-cloud span:hover{background:rgba(255,255,255,0.1);color:var(--white);transform:translateY(-2px)}
+.lang-cloud span.featured{background:rgba(212,168,75,0.12);border-color:rgba(212,168,75,0.2);color:var(--gold-light)}
+
+/* ===== PRICING ===== */
+.pricing{background:var(--white)}
+.pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:800px;margin:0 auto}
+.pricing-card{border-radius:var(--radius);padding:36px;border:2px solid var(--cream-dark);transition:all 0.3s;position:relative}
+.pricing-card:hover{box-shadow:var(--shadow-lg);border-color:transparent}
+.pricing-card.featured{border-color:var(--gold)}
+.pricing-card.featured::before{content:'Best Value';position:absolute;top:-12px;right:24px;background:var(--gold);color:var(--white);padding:3px 14px;border-radius:100px;font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em}
+.pricing-icon{font-size:2.5rem;margin-bottom:12px}
+.pricing-card h3{font-family:'DM Serif Display',serif;font-size:1.4rem;color:var(--navy);margin-bottom:4px}
+.pricing-card .pricing-desc{font-size:0.85rem;color:var(--slate);margin-bottom:20px}
+.pricing-card .price-amount{font-family:'DM Serif Display',serif;font-size:2.8rem;color:var(--navy);line-height:1}
+.pricing-card .price-amount .cents{font-size:1.4rem;vertical-align:super}
+.pricing-card .price-note{font-size:0.8rem;color:var(--slate);margin:4px 0 20px}
+.pricing-card ul{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.pricing-card ul li{font-size:0.88rem;color:var(--text-light);display:flex;align-items:center;gap:10px}
+.pricing-card ul li::before{content:'\u2713';color:var(--sage);font-weight:700}
+.pricing-card .btn-primary{width:100%;justify-content:center;text-align:center}
+
+/* ===== TESTIMONIAL ===== */
+.testimonial{background:var(--cream)}
+.testimonial-card{max-width:700px;margin:0 auto;text-align:center;padding:48px}
+.testimonial-card .quote{font-family:'DM Serif Display',serif;font-size:1.4rem;color:var(--navy);line-height:1.5;margin-bottom:24px;position:relative}
+.testimonial-card .quote::before{content:'\201C';font-size:4rem;color:var(--terracotta);position:absolute;top:-30px;left:-20px;opacity:0.3;font-family:serif}
+.testimonial-card .author{font-size:0.9rem;color:var(--text-light)}
+.testimonial-card .author strong{color:var(--navy)}
+
+/* ===== ABOUT/CREATOR ===== */
+.about{background:var(--white)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.about-visual{background:linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);border-radius:var(--radius);padding:48px;display:flex;align-items:center;justify-content:center;min-height:320px;position:relative}
+.about-visual .desk{position:relative;width:100%;max-width:280px}
+.about-visual .desk-item{background:var(--white);border-radius:8px;padding:16px 18px;box-shadow:0 4px 16px rgba(27,42,74,0.06);margin-bottom:12px;display:flex;align-items:center;gap:10px;font-size:0.8rem;color:var(--text-light)}
+.about-visual .desk-item .emoji{font-size:1.3rem}
+.about-text h2{font-size:2rem}
+.about-text p{color:var(--text-light);line-height:1.7;margin-bottom:16px}
+.about-text .stat-row{display:flex;gap:32px;margin-top:24px;padding-top:24px;border-top:1px solid var(--cream-dark)}
+.about-text .stat-row div{text-align:center}
+.about-text .stat-row .num{font-family:'DM Serif Display',serif;font-size:2rem;color:var(--terracotta);display:block}
+.about-text .stat-row .lbl{font-size:0.75rem;color:var(--slate);text-transform:uppercase;letter-spacing:0.05em}
+
+/* ===== CTA ===== */
+.cta{background:linear-gradient(135deg, var(--navy) 0%, #2C4270 100%);padding:100px 24px;text-align:center;position:relative}
+.cta::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%, rgba(212,168,75,0.06) 0%, transparent 50%);pointer-events:none}
+.cta-inner{max-width:600px;margin:0 auto;position:relative;z-index:1}
+.cta h2{font-family:'DM Serif Display',serif;font-size:2.5rem;color:var(--white);margin-bottom:16px;line-height:1.15}
+.cta p{color:rgba(255,255,255,0.7);margin-bottom:32px;font-size:1.05rem}
+.cta .btn-primary{font-size:1.05rem;padding:16px 40px}
+.cta .btn-secondary{margin-left:12px}
+
+/* ===== FOOTER ===== */
+footer{background:var(--navy);border-top:1px solid rgba(255,255,255,0.06);padding:48px 24px 32px}
+.footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
+footer h4{font-family:'DM Serif Display',serif;color:var(--white);margin-bottom:12px;font-size:1.1rem}
+footer p{font-size:0.82rem;color:rgba(255,255,255,0.5);line-height:1.6;max-width:280px}
+footer a{display:block;font-size:0.85rem;color:rgba(255,255,255,0.5);margin-bottom:8px;transition:color 0.2s}
+footer a:hover{color:var(--white)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.06);margin-top:32px;padding-top:24px;text-align:center;font-size:0.8rem;color:rgba(255,255,255,0.3)}
+
+/* ===== MOBILE ===== */
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;gap:48px;text-align:center}
+  .hero h1{font-size:2.8rem}
+  .hero p{margin-left:auto;margin-right:auto}
+  .hero-buttons{justify-content:center}
+  .hero-book{margin:0 auto;max-width:300px}
+  .hero-book-stats{position:static;margin-top:16px;border-radius:var(--radius)}
+  .age-grid,.tier-grid{grid-template-columns:1fr;max-width:420px;margin:0 auto}
+  .spread-grid{grid-template-columns:1fr;gap:32px}
+  .pricing-grid{grid-template-columns:1fr}
+  .about-grid{grid-template-columns:1fr;gap:32px}
+  .footer-inner{grid-template-columns:1fr 1fr;gap:24px}
+  .lang-cloud span{font-size:0.8rem;padding:6px 14px}
+  .section{padding:60px 20px}
+  .section h2{font-size:2rem}
+}
+@media(max-width:600px){
+  nav{padding:0 16px}
+  .nav-links{display:none}
+  .nav-toggle{display:flex}
+  .hero h1{font-size:2.2rem}
+  .hero{padding:100px 16px 60px}
+  .hero-book{max-width:240px}
+  .hero-book-cover{padding:24px}
+  .hero-book-cover h3{font-size:1.2rem}
+  .hero-book-stats{gap:16px;padding:12px 16px}
+  .hero-book-stats .num{font-size:1.1rem}
+  .hero-book-stats .label{font-size:0.6rem}
+  .pricing-card{padding:24px}
+  .pricing-card .price-amount{font-size:2.2rem}
+  .testimonial-card{padding:24px}
+  .testimonial-card .quote{font-size:1.1rem}
+  .spread-text .features{grid-template-columns:1fr}
+}
+
+/* ===== SCROLL ANIMATIONS ===== */
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+.section h2,.section p.subtitle,.age-grid,.tier-grid,.pricing-grid,.spread-grid,.about-grid,.lang-cloud{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
+.section.in-view h2,.section.in-view p.subtitle,.section.in-view .age-grid,.section.in-view .tier-grid,.section.in-view .pricing-grid,.section.in-view .spread-grid,.section.in-view .about-grid,.section.in-view .lang-cloud{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <svg viewBox="0 0 36 36" fill="none">
+        <circle cx="18" cy="18" r="17" stroke="#1B2A4A" stroke-width="2"/>
+        <path d="M18 6c-6.627 0-12 5.373-12 12s5.373 12 12 12" stroke="#D4735E" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M18 8c-5.523 0-10 4.477-10 10s4.477 10 10 10" stroke="#D4A84B" stroke-width="2" stroke-linecap="round" stroke-dasharray="3 3"/>
+        <circle cx="18" cy="18" r="3" fill="#1B2A4A"/>
+        <path d="M18 12L18 15M18 21L18 24M12 18L15 18M21 18L24 18" stroke="#1B2A4A" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      Passport Pages
+    </a>
+    <div class="nav-links">
+      <a href="#ages">Books</a>
+      <a href="#tiers">Destinations</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#about">Our Story</a>
+      <a href="#cta" class="nav-cta">Pre-Order Now</a>
+    </div>
+    <button class="nav-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-particles">
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">\u2728 Launching Summer 2026</div>
+      <h1>The world is <em>their story.</em></h1>
+      <p>Beautiful travel books that make every destination come alive for kids. Filled with unforgettable facts, hidden histories, and adventures they'll remember forever. For ages 5\u201316+.</p>
+      <div class="hero-buttons">
+        <a href="#ages" class="btn-primary">Explore the Books \u2192</a>
+        <a href="#pricing" class="btn-secondary">See Pricing</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-book">
+        <div class="hero-book-cover">
+          <span class="age-badge">Ages 9\u201312 \u2022 Middle Explorer</span>
+          <h3>London: A Tale of Two Rivers</h3>
+          <p>From Roman walls to royal palaces \u2014 uncover the secret stories hiding in plain sight.</p>
+          <div class="location">\uD83D\uDCCD London, England \u2022 148 pages</div>
+        </div>
+      </div>
+      <div class="hero-book-stats">
+        <div><span class="num">200+</span><span class="label">Destinations</span></div>
+        <div><span class="num">12</span><span class="label">Languages</span></div>
+        <div><span class="num">3</span><span class="label">Age Editions</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AGE LEVELS ===== -->
+<section class="section age-levels" id="ages">
+  <div class="section-inner">
+    <div class="section-label">For Every Age</div>
+    <h2>Three editions. One <span class="highlight">unforgettable trip.</span></h2>
+    <p class="subtitle">Each book is crafted to match how kids at different ages experience the world \u2014 from wide-eyed wonder to deep curiosity.</p>
+    <div class="age-grid fade-in">
+      <div class="age-card">
+        <div class="age-card-visual explorer">
+          <span class="age-icon">\uD83D\uDC36</span>
+        </div>
+        <div class="age-card-body">
+          <span class="age-tag explorer">Young Explorer</span>
+          <h3>The Explorers</h3>
+          <div class="age-range">Ages 5\u20138 \u2022 64 pages</div>
+          <p>Big illustrations, simple stories, and hands-on fun. Every page has a coloring activity, a seek-and-find, or a silly fact to share.</p>
+          <div class="age-features">
+            <span>Lavish full-page illustrations</span>
+            <span>Coloring &amp; sticker activities on every spread</span>
+            <span>Simple "Did You Know?" fact bubbles</span>
+            <span>Seek-and-find games in every city scene</span>
+            <span>Read-aloud friendly, large print</span>
+          </div>
+        </div>
+      </div>
+      <div class="age-card">
+        <div class="age-card-visual adventurer">
+          <span class="age-icon">\uD83D\uDCDA</span>
+        </div>
+        <div class="age-card-body">
+          <span class="age-tag adventurer">Middle Explorer</span>
+          <h3>The Adventurers</h3>
+          <div class="age-range">Ages 9\u201312 \u2022 148 pages</div>
+          <p>Fact-book energy meets travel guide. Deep dives into history, world records, wacky trivia, and brain-teasers that make cities unforgettable.</p>
+          <div class="age-features">
+            <span>Nat Geo\u2013style fact spreads with photos &amp; diagrams</span>
+            <span>World records, "Biggest/Earliest/Strangest" lists</span>
+            <span>Crosswords, word searches, and code-crackers</span>
+            <span>Philosophy &amp; money facts (how much did that castle cost?)</span>
+            <span>Journal pages for their own discoveries</span>
+          </div>
+        </div>
+      </div>
+      <div class="age-card">
+        <div class="age-card-visual trailblazer">
+          <span class="age-icon">\uD83C\uDF0D</span>
+        </div>
+        <div class="age-card-body">
+          <span class="age-tag trailblazer">Trailblazer</span>
+          <h3>The Trailblazers</h3>
+          <div class="age-range">Ages 13\u201316+ \u2022 200+ pages</div>
+          <p>Sophisticated storytelling, deep history, cultural insight, and design-forward layouts. For teens who want to understand the places they visit.</p>
+          <div class="age-features">
+            <span>Essay-style deep dives into history &amp; culture</span>
+            <span>Architecture, art, and urban design explained</span>
+            <span>Photo essays and visual storytelling</span>
+            <span>Controversies, complexities, and honest history</span>
+            <span>Photography &amp; journaling prompts</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DESTINATION TIERS ===== -->
+<section class="section tiers" id="tiers">
+  <div class="section-inner">
+    <div class="section-label">Every Destination</div>
+    <h2>From <span class="highlight">Tier 1</span> to hidden gems.</h2>
+    <p class="subtitle">Three tiers covering every major city and secret treasure on the planet. Books launching in waves \u2014 sign up to vote for the next release.</p>
+    <div class="tier-grid fade-in">
+      <div class="tier-card">
+        <div class="tier-icon t1">\uD83C\uDF0D</div>
+        <h3>Tier 1 \u2014 Global Icons</h3>
+        <div class="tier-desc">The world's most-visited cities. Deep books, maximum content.</div>
+        <div class="tier-examples">
+          <span>London</span><span>Paris</span><span>Tokyo</span>
+          <span>Rome</span><span>New York</span><span>Sydney</span>
+          <span>Barcelona</span><span>Dubai</span><span>Kyoto</span>
+        </div>
+        <div class="price">$24.95 <small>digital \u2022</small> $49.95 <small>hardback</small></div>
+      </div>
+      <div class="tier-card featured">
+        <div class="tier-icon t2">\uD83C\uDFF4\u200D\u2620\uFE0F\uD83C\uDFF4</div>
+        <h3>Tier 2 \u2014 Regional Treasures</h3>
+        <div class="tier-desc">Amazing destinations that deserve their own spotlight.</div>
+        <div class="tier-examples">
+          <span>Brighton</span><span>Oxford</span><span>Bruges</span>
+          <span>Bath</span><span>Edinburgh</span><span>Nice</span>
+          <span>Porto</span><span>Salzburg</span><span>Hanoi</span>
+        </div>
+        <div class="price">$19.95 <small>digital \u2022</small> $39.95 <small>hardback</small></div>
+      </div>
+      <div class="tier-card">
+        <div class="tier-icon t3">\uD83C\uDF3F</div>
+        <h3>Tier 3 \u2014 Hidden Gems</h3>
+        <div class="tier-desc">Small towns, natural wonders, and the places that surprise you.</div>
+        <div class="tier-examples">
+          <span>The Cotswolds</span><span>Hallstatt</span><span>Cinque Terre</span>
+          <span>Sintra</span><span>Gimmelwald</span><span>Rothenburg</span>
+          <span>Bibury</span><span>Castle Combe</span><span>Matera</span>
+        </div>
+        <div class="price">$14.95 <small>digital \u2022</small> $29.95 <small>hardback</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SAMPLE SPREAD ===== -->
+<section class="section sample-spread" id="samples">
+  <div class="section-inner">
+    <div class="section-label">Inside the Book</div>
+    <div class="spread-grid fade-in">
+      <div class="spread-visual">
+        <div class="spread-header">
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="title-placeholder"></div>
+        </div>
+        <div class="spread-fact">
+          <div class="emoji">\uD83C\uDFF0</div>
+          <div class="content">
+            <h4>The Tower of London Used to Be a Zoo</h4>
+            <p>For over 600 years, the Tower housed lions, polar bears, and even an elephant! The Royal Menagerie was one of London's biggest attractions.</p>
+          </div>
+        </div>
+        <div class="spread-fact">
+          <div class="emoji">\uD83D\uDD73\uFE0F</div>
+          <div class="content">
+            <h4>Big Ben Is Not the Clock Tower</h4>
+            <p>"Big Ben" is the nickname of the 13.7-ton bell inside. The tower itself is called the Elizabeth Tower. And the clock face? Nearly 23 feet across!</p>
+          </div>
+        </div>
+        <div class="spread-fact">
+          <div class="emoji">\uD83D\uDC7B</div>
+          <div class="content">
+            <h4>The Underground's Ghost Stations</h4>
+            <p>Over 40 abandoned Tube stations hide beneath London's streets. Aldwych station was used to store priceless art during WWII to keep it safe from bombs.</p>
+          </div>
+        </div>
+        <div class="spread-fact">
+          <div class="emoji">\uD83C\uDF6B</div>
+          <div class="content">
+            <h4>Fish and Chips Saved the Nation</h4>
+            <p>During both World Wars, fish and chips were among the only foods not rationed. The government knew a happy nation needed its comfort food!</p>
+          </div>
+        </div>
+      </div>
+      <div class="spread-text">
+        <h3>What's inside every book</h3>
+        <p>Each Passport Pages book is a visual feast packed with original illustrations, curated photography, and the kind of facts that kids can't wait to share at dinner.</p>
+        <ul class="features">
+          <li><span class="icon">\uD83D\uDCCD</span> Curated city itineraries</li>
+          <li><span class="icon">\uD83C\uDFC6</span> World-record &amp; "biggest ever" facts</li>
+          <li><span class="icon">\uD83E\uDDE0</span> Brain-teasers &amp; puzzles</li>
+          <li><span class="icon">\uD83D\uDCDD</span> Journal &amp; sketch pages</li>
+          <li><span class="icon">\uD83D\uDD0D</span> Hidden-history deep dives</li>
+          <li><span class="icon">\uD83D\uDCF7</span> Photo missions &amp; challenges</li>
+          <li><span class="icon">\uD83D\uDCA1</span> "Did you know?" on every spread</li>
+          <li><span class="icon">\uD83E\uDDE9</span> Collectible destination stickers</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LANGUAGES ===== -->
+<section class="section languages" id="languages">
+  <div class="section-inner">
+    <div class="section-label">\uD83C\uDF0D Available Languages</div>
+    <h2>Every kid deserves <span class="highlight">their mother tongue.</span></h2>
+    <p class="subtitle">Every book is published simultaneously in up to 12 languages \u2014 so whether you're raising a bilingual family or traveling to a new country, your child's book speaks their language.</p>
+    <div class="lang-cloud fade-in">
+      <span class="featured">English</span>
+      <span class="featured">Spanish</span>
+      <span class="featured">French</span>
+      <span class="featured">German</span>
+      <span>Italian</span>
+      <span>Portuguese</span>
+      <span>Mandarin</span>
+      <span>Japanese</span>
+      <span>Korean</span>
+      <span>Arabic</span>
+      <span>Dutch</span>
+      <span>Russian</span>
+      <span>Swedish</span>
+      <span>Norwegian</span>
+      <span>Danish</span>
+      <span>Finnish</span>
+      <span>Polish</span>
+      <span>Czech</span>
+      <span>Greek</span>
+      <span>Turkish</span>
+      <span>Thai</span>
+      <span>Vietnamese</span>
+      <span>Hebrew</span>
+      <span>Hindi</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRICING ===== -->
+<section class="section pricing" id="pricing">
+  <div class="section-inner">
+    <div class="section-label">Simple Pricing</div>
+    <h2>Digital or hardback. <span class="highlight">You choose.</span></h2>
+    <p class="subtitle">Every book comes as a beautiful print-ready PDF you can download instantly, or as a premium hardback shipped to your door.</p>
+    <div class="pricing-grid fade-in">
+      <div class="pricing-card">
+        <div class="pricing-icon">\uD83D\uDCD1</div>
+        <h3>Digital PDF</h3>
+        <div class="pricing-desc">Instant download. Print at home or read on any device.</div>
+        <div class="price-amount">$14.95<span class="cents">\u2013</span></div>
+        <div class="price-note">per book, per destination</div>
+        <ul>
+          <li>Print-ready high-resolution PDF</li>
+          <li>Optimized for iPad &amp; tablet reading</li>
+          <li>Unlimited printing for your family</li>
+          <li>All activities &amp; puzzles included</li>
+          <li>Lifetime access, no expiry</li>
+          <li>Available in 12+ languages</li>
+        </ul>
+        <a href="#cta" class="btn-primary">Get the PDF</a>
+      </div>
+      <div class="pricing-card featured">
+        <div class="pricing-icon">\uD83D\uDCDA</div>
+        <h3>Premium Hardback</h3>
+        <div class="pricing-desc">Dust jacket, sewn binding, keepsake quality. Ships worldwide.</div>
+        <div class="price-amount">$29.95<span class="cents">\u2013</span></div>
+        <div class="price-note">$49.95 for Tier 1 / per destination</div>
+        <ul>
+          <li>Premium 8\u00D710" hardcover with dust jacket</li>
+          <li>Smyth-sewn binding \u2014 lies flat, lasts forever</li>
+          <li>160\u2013220 full-color pages on thick matte paper</li>
+          <li>Ribbon bookmark and elastic closure</li>
+          <li>Custom destination map endpapers</li>
+          <li>Free digital PDF included</li>
+          <li>Ships worldwide \u2014 5\u20138 business days</li>
+        </ul>
+        <a href="#cta" class="btn-primary">Order Hardback</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIAL ===== -->
+<section class="section testimonial">
+  <div class="section-inner">
+    <div class="testimonial-card">
+      <div class="quote">My 10-year-old memorized the entire Paris book before we landed. By the time we reached the Eiffel Tower, he was the one giving ME the tour. That's not a guidebook \u2014 that's magic.</div>
+      <div class="author"><strong>Sophie M.</strong> \u2022 Mom of three, London\u2013Paris trip, Summer 2025</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="section about" id="about">
+  <div class="section-inner">
+    <div class="about-grid fade-in">
+      <div class="about-text">
+        <div class="section-label">The Story</div>
+        <h2>Born from one <span class="highlight">family trip</span> and a 12-year-old fact-lover.</h2>
+        <p>It started with a trip to the UK. Our son Greyson (12) devours fact books like they're candy \u2014 Nat\/Geo, Usborne, world records, philosophy, money, all of it. Our daughter Sophie (9) wants stories and beauty on every page.</p>
+        <p>We couldn't find anything that made our actual destinations come alive for them. So we built it ourselves \u2014 starting with our own trip to Brighton, the Cotswolds, and London. Then we realized: every family deserves this for their trip.</p>
+        <p><strong>Passport Pages</strong> was born. One book per destination. Three age editions. Every language we can manage. Beautiful enough to keep forever, practical enough for the plane ride.</p>
+        <div class="stat-row">
+          <div><span class="num">200+</span><span class="lbl">Destinations Planned</span></div>
+          <div><span class="num">12</span><span class="lbl">Languages</span></div>
+          <div><span class="num">3</span><span class="lbl">Age Editions</span></div>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="desk">
+          <div class="desk-item">
+            <span class="emoji">\uD83D\uDCD6</span>
+            Greyson's Nat\/Geo fact books \u2014 dog-eared and loved
+          </div>
+          <div class="desk-item">
+            <span class="emoji">\uD83C\uDFD4\uFE0F</span>
+            Our UK itinerary \u2014 Brighton, Cotswolds, London
+          </div>
+          <div class="desk-item">
+            <span class="emoji">\uD83D\uDCDD</span>
+            Sophie's sketches of everything we'd see
+          </div>
+          <div class="desk-item">
+            <span class="emoji">\uD83C\uDF93</span>
+            "What if we made books for every city?"
+          </div>
+          <div class="desk-item">
+            <span class="emoji">\u2708\uFE0F</span>
+            Passport Pages was born
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta" id="cta">
+  <div class="cta-inner">
+    <h2>Ready for the adventure?</h2>
+    <p>Be the first to know when books launch. Sign up for early-bird pricing, vote on which destination comes next, and get a free sample of our London book.</p>
+    <div style="display:flex;gap:12px;max-width:480px;margin:0 auto;flex-wrap:wrap;justify-content:center">
+      <input type="email" placeholder="Your email address" style="flex:1;min-width:200px;padding:14px 20px;border-radius:100px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.06);color:var(--white);font-size:0.95rem;outline:none">
+      <button class="btn-primary">Get Free Sample \u2192</button>
+    </div>
+    <p style="font-size:0.75rem;color:rgba(255,255,255,0.35);margin-top:16px">No spam. Unsubscribe anytime. Free sample is a 12-page PDF of our London Middle Explorer edition.</p>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <h4 style="display:flex;align-items:center;gap:8px">
+        <svg viewBox="0 0 36 36" width="28" height="28" fill="none">
+          <circle cx="18" cy="18" r="17" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+          <path d="M18 6c-6.627 0-12 5.373-12 12s5.373 12 12 12" stroke="#D4735E" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="18" cy="18" r="3" fill="rgba(255,255,255,0.5)"/>
+        </svg>
+        Passport Pages
+      </h4>
+      <p>Beautiful travel books that make every destination come alive for kids. From Tier 1 cities to hidden gems, in every language imaginable.</p>
+    </div>
+    <div>
+      <h4>Books</h4>
+      <a href="#ages">Young Explorer (5\u20138)</a>
+      <a href="#ages">Adventurer (9\u201312)</a>
+      <a href="#ages">Trailblazer (13\u201316+)</a>
+      <a href="#tiers">Destination Tiers</a>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <a href="#about">Our Story</a>
+      <a href="#">FAQ</a>
+      <a href="#">Shipping</a>
+      <a href="#">Contact</a>
+    </div>
+    <div>
+      <h4>Legal</h4>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Refund Policy</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    \u00A9 2026 Passport Pages. All rights reserved. The world is their story.
+  </div>
+</footer>
+
+<!-- ===== SCROLL ANIMATIONS ===== -->
+<script>
+// Mobile nav toggle
+document.querySelector('.nav-toggle')?.addEventListener('click', () => {
+  const links = document.querySelector('.nav-links');
+  links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+  if(links.style.display === 'flex') {
+    links.style.flexDirection = 'column';
+    links.style.position = 'absolute';
+    links.style.top = '72px';
+    links.style.left = '0';
+    links.style.right = '0';
+    links.style.background = 'rgba(250,248,245,0.95)';
+    links.style.backdropFilter = 'blur(12px)';
+    links.style.padding = '24px';
+    links.style.borderBottom = '1px solid rgba(27,42,74,0.06)';
+    links.style.gap = '16px';
+    links.style.alignItems = 'center';
+  }
+});
+
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) {
+      entry.target.classList.add('in-view');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.section').forEach(s => observer.observe(s));
+document.querySelectorAll('.fade-in').forEach(el => {
+  observer.observe(el);
+  el.style.opacity = '1';
+  el.style.transform = 'translateY(0)';
+});
+</script>
+</body>
+</html>
