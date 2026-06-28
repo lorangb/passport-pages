@@ -112,7 +112,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,248,245,
 .age-card-body p{font-size:0.9rem;color:var(--text-light);line-height:1.6;margin-bottom:16px}
 .age-features{display:flex;flex-direction:column;gap:6px}
 .age-features span{font-size:0.82rem;color:var(--text-light);display:flex;align-items:center;gap:8px}
-.age-features span::before{content:'\u2713';color:var(--sage);font-weight:700;font-size:0.75rem}
+.age-features span::before{content:'✓';color:var(--sage);font-weight:700;font-size:0.75rem}
 
 /* ===== TIERS ===== */
 .tiers{background:var(--cream-dark)}
@@ -183,7 +183,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,248,245,
 .pricing-card .price-note{font-size:0.8rem;color:var(--slate);margin:4px 0 20px}
 .pricing-card ul{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
 .pricing-card ul li{font-size:0.88rem;color:var(--text-light);display:flex;align-items:center;gap:10px}
-.pricing-card ul li::before{content:'\u2713';color:var(--sage);font-weight:700}
+.pricing-card ul li::before{content:'✓';color:var(--sage);font-weight:700}
 .pricing-card .btn-primary{width:100%;justify-content:center;text-align:center}
 
 /* ===== TESTIMONIAL ===== */
@@ -267,9 +267,75 @@ footer a:hover{color:var(--white)}
 .fade-in.visible{opacity:1;transform:translateY(0)}
 .section h2,.section p.subtitle,.age-grid,.tier-grid,.pricing-grid,.spread-grid,.about-grid,.lang-cloud{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
 .section.in-view h2,.section.in-view p.subtitle,.section.in-view .age-grid,.section.in-view .tier-grid,.section.in-view .pricing-grid,.section.in-view .spread-grid,.section.in-view .about-grid,.section.in-view .lang-cloud{opacity:1;transform:translateY(0)}
+
+/* ===== WHIMSY DECORATIONS ===== */
+/* Travel route dotted lines */
+.section::after{content:'';position:absolute;left:50%;bottom:0;width:60%;height:2px;background:repeating-linear-gradient(90deg,var(--terracotta) 0,var(--terracotta) 8px,transparent 8px,transparent 16px);opacity:0.15;transform:translateX(-50%);pointer-events:none}
+.section:last-of-type::after,.cta::after{display:none}
+.section{position:relative}
+
+/* Floating paper plane */
+.paper-plane{position:fixed;font-size:1.5rem;opacity:0.08;pointer-events:none;z-index:0;animation:fly 25s linear infinite}
+.paper-plane:nth-child(1){top:20%;left:-5%;animation-delay:0s}
+.paper-plane:nth-child(2){top:50%;left:-5%;animation-delay:8s;font-size:1.2rem;opacity:0.05}
+.paper-plane:nth-child(3){top:75%;left:-5%;animation-delay:16s;font-size:1.8rem;opacity:0.04}
+@keyframes fly{0%{transform:translateX(0) translateY(0) rotate(-15deg)}100%{transform:translateX(110vw) translateY(-80px) rotate(-15deg)}}
+
+/* Passport stamp accent */
+.stamp{position:absolute;width:80px;height:80px;border-radius:50%;border:3px dashed rgba(212,115,94,0.15);display:flex;align-items:center;justify-content:center;font-size:2rem;transform:rotate(-12deg);pointer-events:none;opacity:0.4}
+.stamp-1{top:40px;right:40px}
+.stamp-2{bottom:40px;left:40px;transform:rotate(8deg)}
+
+/* Whimsy corner flourishes */
+.flourish{position:absolute;width:60px;height:60px;pointer-events:none;opacity:0.08}
+.flourish::before,.flourish::after{content:'';position:absolute;background:var(--terracotta)}
+.flourish-tl{top:-8px;left:-8px}
+.flourish-tl::before{top:0;left:0;width:30px;height:2px;border-radius:2px}
+.flourish-tl::after{top:0;left:0;width:2px;height:30px;border-radius:2px}
+.flourish-br{bottom:-8px;right:-8px}
+.flourish-br::before{bottom:0;right:0;width:30px;height:2px;border-radius:2px}
+.flourish-br::after{bottom:0;right:0;width:2px;height:30px;border-radius:2px}
+
+/* Whimsy heading treatment */
+.section h2{position:relative;display:inline-block}
+.section h2::after{content:'✦';position:absolute;bottom:-8px;left:0;font-size:0.6rem;color:var(--terracotta);opacity:0.4}
+
+/* Playful age-card hover */
+.age-card{position:relative;overflow:hidden}
+.age-card::before{content:'';position:absolute;top:-50%;right:-50%;width:100%;height:200%;background:radial-gradient(circle at 70% 30%,rgba(212,115,94,0.03) 0%,transparent 60%);transition:opacity 0.4s;pointer-events:none;opacity:0}
+.age-card:hover::before{opacity:1}
+
+/* Tier card ribbon */
+.tier-card.featured::before{content:'★ Most Popular';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--white);padding:3px 16px;border-radius:100px;font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em}
+.tier-card.featured::after{content:'✦';position:absolute;top:20px;right:20px;font-size:0.8rem;color:var(--gold);opacity:0.3}
+
+/* Stamp effect on pricing cards */
+.pricing-card.featured{border-color:var(--gold);position:relative}
+.pricing-card.featured::after{content:'✓ BEST VALUE';position:absolute;top:16px;right:-8px;background:var(--terracotta);color:var(--white);padding:3px 10px;font-size:0.6rem;font-weight:700;letter-spacing:0.06em;border-radius:4px;transform:rotate(3deg)}
+
+/* Whimsical language cloud */
+.lang-cloud span{position:relative;transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1)}
+.lang-cloud span:hover{transform:translateY(-3px) scale(1.05);background:rgba(255,255,255,0.12)}
+
+/* Testimonial quote marks */
+.testimonial-card{position:relative}
+.testimonial-card .quote::before{content:'"';font-size:5rem;color:var(--terracotta);position:absolute;top:-20px;left:-10px;opacity:0.15;font-family:serif;line-height:1}
+
+/* CTA whimsy */
+.cta{position:relative;overflow:hidden}
+.cta::after{content:'✈ ● ✈ ● ✈';position:absolute;bottom:20px;left:50%;transform:translateX(-50%);font-size:0.7rem;letter-spacing:8px;color:rgba(255,255,255,0.06);pointer-events:none}
+
+@media(max-width:600px){
+  .stamp,.flourish{display:none}
+  .section h2::after{display:none}
+}
 </style>
 </head>
 <body>
+<!-- Floating paper planes for whimsy -->
+<div class="paper-plane">✈</div>
+<div class="paper-plane">✈</div>
+<div class="paper-plane">✈</div>
 
 <!-- ===== NAV ===== -->
 <nav>
@@ -304,21 +370,21 @@ footer a:hover{color:var(--white)}
   </div>
   <div class="hero-inner">
     <div>
-      <div class="hero-badge">\u2728 Launching Summer 2026</div>
+      <div class="hero-badge">✨ Launching Summer 2026</div>
       <h1>The world is <em>their story.</em></h1>
-      <p>Beautiful travel books that make every destination come alive for kids. Filled with unforgettable facts, hidden histories, and adventures they'll remember forever. For ages 5\u201316+.</p>
+      <p>Beautiful travel books that make every destination come alive for kids. Filled with unforgettable facts, hidden histories, and adventures they'll remember forever. For ages 5–16+.</p>
       <div class="hero-buttons">
-        <a href="#ages" class="btn-primary">Explore the Books \u2192</a>
+        <a href="#ages" class="btn-primary">Explore the Books →</a>
         <a href="#pricing" class="btn-secondary">See Pricing</a>
       </div>
     </div>
     <div class="hero-visual">
       <div class="hero-book">
         <div class="hero-book-cover">
-          <span class="age-badge">Ages 9\u201312 \u2022 Middle Explorer</span>
+          <span class="age-badge">Ages 9–12 • Middle Explorer</span>
           <h3>London: A Tale of Two Rivers</h3>
-          <p>From Roman walls to royal palaces \u2014 uncover the secret stories hiding in plain sight.</p>
-          <div class="location">\uD83D\uDCCD London, England \u2022 148 pages</div>
+          <p>From Roman walls to royal palaces — uncover the secret stories hiding in plain sight.</p>
+          <div class="location">📍 London, England • 148 pages</div>
         </div>
       </div>
       <div class="hero-book-stats">
@@ -335,16 +401,16 @@ footer a:hover{color:var(--white)}
   <div class="section-inner">
     <div class="section-label">For Every Age</div>
     <h2>Three editions. One <span class="highlight">unforgettable trip.</span></h2>
-    <p class="subtitle">Each book is crafted to match how kids at different ages experience the world \u2014 from wide-eyed wonder to deep curiosity.</p>
+    <p class="subtitle">Each book is crafted to match how kids at different ages experience the world — from wide-eyed wonder to deep curiosity.</p>
     <div class="age-grid fade-in">
       <div class="age-card">
         <div class="age-card-visual explorer">
-          <span class="age-icon">\uD83D\uDC36</span>
+          <span class="age-icon">🐶</span>
         </div>
         <div class="age-card-body">
           <span class="age-tag explorer">Young Explorer</span>
           <h3>The Explorers</h3>
-          <div class="age-range">Ages 5\u20138 \u2022 64 pages</div>
+          <div class="age-range">Ages 5–8 • 64 pages</div>
           <p>Big illustrations, simple stories, and hands-on fun. Every page has a coloring activity, a seek-and-find, or a silly fact to share.</p>
           <div class="age-features">
             <span>Lavish full-page illustrations</span>
@@ -357,15 +423,15 @@ footer a:hover{color:var(--white)}
       </div>
       <div class="age-card">
         <div class="age-card-visual adventurer">
-          <span class="age-icon">\uD83D\uDCDA</span>
+          <span class="age-icon">📚</span>
         </div>
         <div class="age-card-body">
           <span class="age-tag adventurer">Middle Explorer</span>
           <h3>The Adventurers</h3>
-          <div class="age-range">Ages 9\u201312 \u2022 148 pages</div>
+          <div class="age-range">Ages 9–12 • 148 pages</div>
           <p>Fact-book energy meets travel guide. Deep dives into history, world records, wacky trivia, and brain-teasers that make cities unforgettable.</p>
           <div class="age-features">
-            <span>Nat Geo\u2013style fact spreads with photos &amp; diagrams</span>
+            <span>Nat Geo–style fact spreads with photos &amp; diagrams</span>
             <span>World records, "Biggest/Earliest/Strangest" lists</span>
             <span>Crosswords, word searches, and code-crackers</span>
             <span>Philosophy &amp; money facts (how much did that castle cost?)</span>
@@ -375,12 +441,12 @@ footer a:hover{color:var(--white)}
       </div>
       <div class="age-card">
         <div class="age-card-visual trailblazer">
-          <span class="age-icon">\uD83C\uDF0D</span>
+          <span class="age-icon">🌍</span>
         </div>
         <div class="age-card-body">
           <span class="age-tag trailblazer">Trailblazer</span>
           <h3>The Trailblazers</h3>
-          <div class="age-range">Ages 13\u201316+ \u2022 200+ pages</div>
+          <div class="age-range">Ages 13–16+ • 200+ pages</div>
           <p>Sophisticated storytelling, deep history, cultural insight, and design-forward layouts. For teens who want to understand the places they visit.</p>
           <div class="age-features">
             <span>Essay-style deep dives into history &amp; culture</span>
@@ -400,40 +466,40 @@ footer a:hover{color:var(--white)}
   <div class="section-inner">
     <div class="section-label">Every Destination</div>
     <h2>From <span class="highlight">Tier 1</span> to hidden gems.</h2>
-    <p class="subtitle">Three tiers covering every major city and secret treasure on the planet. Books launching in waves \u2014 sign up to vote for the next release.</p>
+    <p class="subtitle">Three tiers covering every major city and secret treasure on the planet. Books launching in waves — sign up to vote for the next release.</p>
     <div class="tier-grid fade-in">
       <div class="tier-card">
-        <div class="tier-icon t1">\uD83C\uDF0D</div>
-        <h3>Tier 1 \u2014 Global Icons</h3>
+        <div class="tier-icon t1">🌍</div>
+        <h3>Tier 1 — Global Icons</h3>
         <div class="tier-desc">The world's most-visited cities. Deep books, maximum content.</div>
         <div class="tier-examples">
           <span>London</span><span>Paris</span><span>Tokyo</span>
           <span>Rome</span><span>New York</span><span>Sydney</span>
           <span>Barcelona</span><span>Dubai</span><span>Kyoto</span>
         </div>
-        <div class="price">$24.95 <small>digital \u2022</small> $49.95 <small>hardback</small></div>
+        <div class="price">$24.95 <small>digital •</small> $49.95 <small>hardback</small></div>
       </div>
       <div class="tier-card featured">
-        <div class="tier-icon t2">\uD83C\uDFF4\u200D\u2620\uFE0F\uD83C\uDFF4</div>
-        <h3>Tier 2 \u2014 Regional Treasures</h3>
+        <div class="tier-icon t2">🧭</div>
+        <h3>Tier 2 — Regional Treasures</h3>
         <div class="tier-desc">Amazing destinations that deserve their own spotlight.</div>
         <div class="tier-examples">
           <span>Brighton</span><span>Oxford</span><span>Bruges</span>
           <span>Bath</span><span>Edinburgh</span><span>Nice</span>
           <span>Porto</span><span>Salzburg</span><span>Hanoi</span>
         </div>
-        <div class="price">$19.95 <small>digital \u2022</small> $39.95 <small>hardback</small></div>
+        <div class="price">$19.95 <small>digital •</small> $39.95 <small>hardback</small></div>
       </div>
       <div class="tier-card">
-        <div class="tier-icon t3">\uD83C\uDF3F</div>
-        <h3>Tier 3 \u2014 Hidden Gems</h3>
+        <div class="tier-icon t3">🌿</div>
+        <h3>Tier 3 — Hidden Gems</h3>
         <div class="tier-desc">Small towns, natural wonders, and the places that surprise you.</div>
         <div class="tier-examples">
           <span>The Cotswolds</span><span>Hallstatt</span><span>Cinque Terre</span>
           <span>Sintra</span><span>Gimmelwald</span><span>Rothenburg</span>
           <span>Bibury</span><span>Castle Combe</span><span>Matera</span>
         </div>
-        <div class="price">$14.95 <small>digital \u2022</small> $29.95 <small>hardback</small></div>
+        <div class="price">$14.95 <small>digital •</small> $29.95 <small>hardback</small></div>
       </div>
     </div>
   </div>
@@ -452,28 +518,28 @@ footer a:hover{color:var(--white)}
           <div class="title-placeholder"></div>
         </div>
         <div class="spread-fact">
-          <div class="emoji">\uD83C\uDFF0</div>
+          <div class="emoji">🏰</div>
           <div class="content">
             <h4>The Tower of London Used to Be a Zoo</h4>
             <p>For over 600 years, the Tower housed lions, polar bears, and even an elephant! The Royal Menagerie was one of London's biggest attractions.</p>
           </div>
         </div>
         <div class="spread-fact">
-          <div class="emoji">\uD83D\uDD73\uFE0F</div>
+          <div class="emoji">🕳️</div>
           <div class="content">
             <h4>Big Ben Is Not the Clock Tower</h4>
             <p>"Big Ben" is the nickname of the 13.7-ton bell inside. The tower itself is called the Elizabeth Tower. And the clock face? Nearly 23 feet across!</p>
           </div>
         </div>
         <div class="spread-fact">
-          <div class="emoji">\uD83D\uDC7B</div>
+          <div class="emoji">👻</div>
           <div class="content">
             <h4>The Underground's Ghost Stations</h4>
             <p>Over 40 abandoned Tube stations hide beneath London's streets. Aldwych station was used to store priceless art during WWII to keep it safe from bombs.</p>
           </div>
         </div>
         <div class="spread-fact">
-          <div class="emoji">\uD83C\uDF6B</div>
+          <div class="emoji">🍫</div>
           <div class="content">
             <h4>Fish and Chips Saved the Nation</h4>
             <p>During both World Wars, fish and chips were among the only foods not rationed. The government knew a happy nation needed its comfort food!</p>
@@ -484,14 +550,14 @@ footer a:hover{color:var(--white)}
         <h3>What's inside every book</h3>
         <p>Each Passport Pages book is a visual feast packed with original illustrations, curated photography, and the kind of facts that kids can't wait to share at dinner.</p>
         <ul class="features">
-          <li><span class="icon">\uD83D\uDCCD</span> Curated city itineraries</li>
-          <li><span class="icon">\uD83C\uDFC6</span> World-record &amp; "biggest ever" facts</li>
-          <li><span class="icon">\uD83E\uDDE0</span> Brain-teasers &amp; puzzles</li>
-          <li><span class="icon">\uD83D\uDCDD</span> Journal &amp; sketch pages</li>
-          <li><span class="icon">\uD83D\uDD0D</span> Hidden-history deep dives</li>
-          <li><span class="icon">\uD83D\uDCF7</span> Photo missions &amp; challenges</li>
-          <li><span class="icon">\uD83D\uDCA1</span> "Did you know?" on every spread</li>
-          <li><span class="icon">\uD83E\uDDE9</span> Collectible destination stickers</li>
+          <li><span class="icon">📍</span> Curated city itineraries</li>
+          <li><span class="icon">🏆</span> World-record &amp; "biggest ever" facts</li>
+          <li><span class="icon">🧠</span> Brain-teasers &amp; puzzles</li>
+          <li><span class="icon">📝</span> Journal &amp; sketch pages</li>
+          <li><span class="icon">🔍</span> Hidden-history deep dives</li>
+          <li><span class="icon">📷</span> Photo missions &amp; challenges</li>
+          <li><span class="icon">💡</span> "Did you know?" on every spread</li>
+          <li><span class="icon">🧩</span> Collectible destination stickers</li>
         </ul>
       </div>
     </div>
@@ -501,9 +567,9 @@ footer a:hover{color:var(--white)}
 <!-- ===== LANGUAGES ===== -->
 <section class="section languages" id="languages">
   <div class="section-inner">
-    <div class="section-label">\uD83C\uDF0D Available Languages</div>
+    <div class="section-label">🌍 Available Languages</div>
     <h2>Every kid deserves <span class="highlight">their mother tongue.</span></h2>
-    <p class="subtitle">Every book is published simultaneously in up to 12 languages \u2014 so whether you're raising a bilingual family or traveling to a new country, your child's book speaks their language.</p>
+    <p class="subtitle">Every book is published simultaneously in up to 12 languages — so whether you're raising a bilingual family or traveling to a new country, your child's book speaks their language.</p>
     <div class="lang-cloud fade-in">
       <span class="featured">English</span>
       <span class="featured">Spanish</span>
@@ -541,10 +607,10 @@ footer a:hover{color:var(--white)}
     <p class="subtitle">Every book comes as a beautiful print-ready PDF you can download instantly, or as a premium hardback shipped to your door.</p>
     <div class="pricing-grid fade-in">
       <div class="pricing-card">
-        <div class="pricing-icon">\uD83D\uDCD1</div>
+        <div class="pricing-icon">📑</div>
         <h3>Digital PDF</h3>
         <div class="pricing-desc">Instant download. Print at home or read on any device.</div>
-        <div class="price-amount">$14.95<span class="cents">\u2013</span></div>
+        <div class="price-amount">$14.95<span class="cents">–</span></div>
         <div class="price-note">per book, per destination</div>
         <ul>
           <li>Print-ready high-resolution PDF</li>
@@ -557,19 +623,19 @@ footer a:hover{color:var(--white)}
         <a href="#cta" class="btn-primary">Get the PDF</a>
       </div>
       <div class="pricing-card featured">
-        <div class="pricing-icon">\uD83D\uDCDA</div>
+        <div class="pricing-icon">📚</div>
         <h3>Premium Hardback</h3>
         <div class="pricing-desc">Dust jacket, sewn binding, keepsake quality. Ships worldwide.</div>
-        <div class="price-amount">$29.95<span class="cents">\u2013</span></div>
+        <div class="price-amount">$29.95<span class="cents">–</span></div>
         <div class="price-note">$49.95 for Tier 1 / per destination</div>
         <ul>
-          <li>Premium 8\u00D710" hardcover with dust jacket</li>
-          <li>Smyth-sewn binding \u2014 lies flat, lasts forever</li>
-          <li>160\u2013220 full-color pages on thick matte paper</li>
+          <li>Premium 8×10" hardcover with dust jacket</li>
+          <li>Smyth-sewn binding — lies flat, lasts forever</li>
+          <li>160–220 full-color pages on thick matte paper</li>
           <li>Ribbon bookmark and elastic closure</li>
           <li>Custom destination map endpapers</li>
           <li>Free digital PDF included</li>
-          <li>Ships worldwide \u2014 5\u20138 business days</li>
+          <li>Ships worldwide — 5–8 business days</li>
         </ul>
         <a href="#cta" class="btn-primary">Order Hardback</a>
       </div>
@@ -581,8 +647,8 @@ footer a:hover{color:var(--white)}
 <section class="section testimonial">
   <div class="section-inner">
     <div class="testimonial-card">
-      <div class="quote">My 10-year-old memorized the entire Paris book before we landed. By the time we reached the Eiffel Tower, he was the one giving ME the tour. That's not a guidebook \u2014 that's magic.</div>
-      <div class="author"><strong>Sophie M.</strong> \u2022 Mom of three, London\u2013Paris trip, Summer 2025</div>
+      <div class="quote">My 10-year-old memorized the entire Paris book before we landed. By the time we reached the Eiffel Tower, he was the one giving ME the tour. That's not a guidebook — that's magic.</div>
+      <div class="author"><strong>Sophie M.</strong> • Mom of three, London–Paris trip, Summer 2025</div>
     </div>
   </div>
 </section>
@@ -594,8 +660,8 @@ footer a:hover{color:var(--white)}
       <div class="about-text">
         <div class="section-label">The Story</div>
         <h2>Born from one <span class="highlight">family trip</span> and a 12-year-old fact-lover.</h2>
-        <p>It started with a trip to the UK. Our son Greyson (12) devours fact books like they're candy \u2014 Nat\/Geo, Usborne, world records, philosophy, money, all of it. Our daughter Sophie (9) wants stories and beauty on every page.</p>
-        <p>We couldn't find anything that made our actual destinations come alive for them. So we built it ourselves \u2014 starting with our own trip to Brighton, the Cotswolds, and London. Then we realized: every family deserves this for their trip.</p>
+        <p>It started with a trip to the UK. Our son Greyson (12) devours fact books like they're candy — Nat\/Geo, Usborne, world records, philosophy, money, all of it. Our daughter Sophie (9) wants stories and beauty on every page.</p>
+        <p>We couldn't find anything that made our actual destinations come alive for them. So we built it ourselves — starting with our own trip to Brighton, the Cotswolds, and London. Then we realized: every family deserves this for their trip.</p>
         <p><strong>Passport Pages</strong> was born. One book per destination. Three age editions. Every language we can manage. Beautiful enough to keep forever, practical enough for the plane ride.</p>
         <div class="stat-row">
           <div><span class="num">200+</span><span class="lbl">Destinations Planned</span></div>
@@ -606,23 +672,23 @@ footer a:hover{color:var(--white)}
       <div class="about-visual">
         <div class="desk">
           <div class="desk-item">
-            <span class="emoji">\uD83D\uDCD6</span>
-            Greyson's Nat\/Geo fact books \u2014 dog-eared and loved
+            <span class="emoji">📖</span>
+            Greyson's Nat\/Geo fact books — dog-eared and loved
           </div>
           <div class="desk-item">
-            <span class="emoji">\uD83C\uDFD4\uFE0F</span>
-            Our UK itinerary \u2014 Brighton, Cotswolds, London
+            <span class="emoji">🏔️</span>
+            Our UK itinerary — Brighton, Cotswolds, London
           </div>
           <div class="desk-item">
-            <span class="emoji">\uD83D\uDCDD</span>
+            <span class="emoji">📝</span>
             Sophie's sketches of everything we'd see
           </div>
           <div class="desk-item">
-            <span class="emoji">\uD83C\uDF93</span>
+            <span class="emoji">🎓</span>
             "What if we made books for every city?"
           </div>
           <div class="desk-item">
-            <span class="emoji">\u2708\uFE0F</span>
+            <span class="emoji">✈️</span>
             Passport Pages was born
           </div>
         </div>
@@ -638,7 +704,7 @@ footer a:hover{color:var(--white)}
     <p>Be the first to know when books launch. Sign up for early-bird pricing, vote on which destination comes next, and get a free sample of our London book.</p>
     <div style="display:flex;gap:12px;max-width:480px;margin:0 auto;flex-wrap:wrap;justify-content:center">
       <input type="email" placeholder="Your email address" style="flex:1;min-width:200px;padding:14px 20px;border-radius:100px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.06);color:var(--white);font-size:0.95rem;outline:none">
-      <button class="btn-primary">Get Free Sample \u2192</button>
+      <button class="btn-primary">Get Free Sample →</button>
     </div>
     <p style="font-size:0.75rem;color:rgba(255,255,255,0.35);margin-top:16px">No spam. Unsubscribe anytime. Free sample is a 12-page PDF of our London Middle Explorer edition.</p>
   </div>
@@ -660,9 +726,9 @@ footer a:hover{color:var(--white)}
     </div>
     <div>
       <h4>Books</h4>
-      <a href="#ages">Young Explorer (5\u20138)</a>
-      <a href="#ages">Adventurer (9\u201312)</a>
-      <a href="#ages">Trailblazer (13\u201316+)</a>
+      <a href="#ages">Young Explorer (5–8)</a>
+      <a href="#ages">Adventurer (9–12)</a>
+      <a href="#ages">Trailblazer (13–16+)</a>
       <a href="#tiers">Destination Tiers</a>
     </div>
     <div>
@@ -680,7 +746,7 @@ footer a:hover{color:var(--white)}
     </div>
   </div>
   <div class="footer-bottom">
-    \u00A9 2026 Passport Pages. All rights reserved. The world is their story.
+    © 2026 Passport Pages. All rights reserved. The world is their story.
   </div>
 </footer>
 
