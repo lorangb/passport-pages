@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brighton & the Cotswolds — A Family Adventure</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Serif+Display:ital@0;1&family=DM+Serif+Text:ital@0;1&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:14px}
+body{font-family:'DM Sans',sans-serif;color:#1B1B2F;background:#FAF8F5;line-height:1.5}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+
+/* ===== COLORS ===== */
+:root{
+  --navy:#1B2A4A;
+  --navy-light:#2C4270;
+  --terracotta:#D4735E;
+  --terracotta-light:#E89582;
+  --gold:#D4A84B;
+  --gold-light:#E8C57A;
+  --cream:#FAF8F5;
+  --cream-dark:#F0EAE0;
+  --sage:#8CB38A;
+  --sage-light:#B5D4B3;
+  --slate:#6B7B8D;
+  --white:#FFFFFF;
+}
+
+/* ===== PAGE ===== */
+.page{
+  width:210mm;min-height:297mm;
+  padding:18mm 20mm 14mm;
+  position:relative;
+  overflow:hidden;
+  background:var(--white);
+  page-break-after:always;
+  break-after:page;
+}
+.page::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4mm;background:linear-gradient(90deg,var(--terracotta),var(--gold),var(--sage),var(--navy));opacity:0.3}
+
+/* ===== COVER ===== */
+.cover{
+  background:linear-gradient(135deg,#1B2A4A 0%,#2C4270 60%,#3A5A8C 100%);
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  text-align:center;color:var(--white);position:relative;
+}
+.cover-pattern{position:absolute;inset:0;opacity:0.04;background-image:radial-gradient(circle at 25% 25%, white 1px, transparent 1px);background-size:30px 30px}
+.cover-stars{position:absolute;inset:0;overflow:hidden}
+.cover-stars span{position:absolute;width:4px;height:4px;background:rgba(255,255,255,0.15);border-radius:50%}
+.cover-stars span:nth-child(1){top:15%;left:20%;width:6px;height:6px}
+.cover-stars span:nth-child(2){top:25%;left:75%;width:3px;height:3px}
+.cover-stars span:nth-child(3){top:55%;left:10%;width:5px;height:5px}
+.cover-stars span:nth-child(4){top:70%;left:80%;width:4px;height:4px}
+.cover-stars span:nth-child(5){top:40%;left:55%;width:3px;height:3px}
+.cover-stars span:nth-child(6){top:80%;left:30%;width:5px;height:5px}
+
+.cover-badge{display:inline-block;padding:4px 16px;border:1px solid rgba(255,255,255,0.2);border-radius:100px;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:24px}
+.cover h1{font-family:'DM Serif Display',serif;font-size:2.8rem;line-height:1.1;margin-bottom:6px;letter-spacing:-0.01em}
+.cover h1 em{color:var(--gold-light);font-style:italic}
+.cover .subtitle{font-size:1.1rem;color:rgba(255,255,255,0.7);font-style:italic;font-family:'DM Serif Text',serif;margin-bottom:16px}
+.cover .divider{width:60px;height:2px;background:var(--gold);margin:16px auto;border-radius:4px}
+.cover .meta{font-size:0.75rem;color:rgba(255,255,255,0.5);letter-spacing:0.06em}
+.cover .meta span{margin:0 8px}
+.cover .illustration{position:relative;width:120px;height:120px;margin-bottom:28px}
+.cover .illustration svg{width:100%;height:100%}
+
+/* ===== WHIMSY ELEMENTS ===== */
+.wave-top{position:absolute;top:0;left:0;right:0;height:20mm;overflow:hidden;pointer-events:none}
+.wave-top svg{position:absolute;bottom:0;width:100%;height:100%}
+.wave-bottom{position:absolute;bottom:0;left:0;right:0;height:20mm;overflow:hidden;pointer-events:none;transform:rotate(180deg)}
+.wave-bottom svg{position:absolute;top:0;width:100%;height:100%}
+
+.cloud{position:absolute;opacity:0.06;pointer-events:none;font-size:4rem}
+.cloud-1{top:5%;left:10%}.cloud-2{top:12%;right:8%}.cloud-3{bottom:8%;left:20%}
+
+/* ===== CHAPTER ===== */
+.chapter-number{font-family:'DM Serif Display',serif;font-size:0.8rem;color:var(--terracotta);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:4px}
+h2{font-family:'DM Serif Display',serif;font-size:1.8rem;color:var(--navy);margin-bottom:4px;line-height:1.15}
+h2 .hl{color:var(--terracotta);font-style:italic}
+.chapter-line{width:50px;height:2px;background:var(--gold);border-radius:4px;margin-bottom:16px}
+
+/* ===== STORY BLOCK ===== */
+.story{font-size:0.9rem;color:var(--text-light);line-height:1.7;margin-bottom:14px}
+.story em{color:var(--terracotta);font-style:italic}
+.story strong{color:var(--navy)}
+
+/* ===== FACT BOX ===== */
+.fact-box{display:flex;gap:14px;padding:14px 16px;border-radius:12px;margin-bottom:10px;position:relative;overflow:hidden}
+.fact-box::before{content:'';position:absolute;inset:0;border-radius:12px;opacity:0.15}
+.fact-box.orange{background:linear-gradient(135deg,rgba(212,115,94,0.06),rgba(212,115,94,0.02))}
+.fact-box.orange::before{background:linear-gradient(135deg,var(--terracotta),transparent)}
+.fact-box.gold{background:linear-gradient(135deg,rgba(212,168,75,0.06),rgba(212,168,75,0.02))}
+.fact-box.gold::before{background:linear-gradient(135deg,var(--gold),transparent)}
+.fact-box.green{background:linear-gradient(135deg,rgba(140,179,138,0.06),rgba(140,179,138,0.02))}
+.fact-box.green::before{background:linear-gradient(135deg,var(--sage),transparent)}
+.fact-box.blue{background:linear-gradient(135deg,rgba(27,42,74,0.04),rgba(27,42,74,0.02))}
+.fact-box.blue::before{background:linear-gradient(135deg,var(--navy),transparent)}
+
+.fact-icon{font-size:1.6rem;flex-shrink:0;width:38px;height:38px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:rgba(255,255,255,0.7);position:relative;z-index:1}
+.fact-content{position:relative;z-index:1;flex:1}
+.fact-title{font-family:'DM Serif Text',serif;font-size:0.85rem;color:var(--navy);margin-bottom:2px}
+.fact-text{font-size:0.78rem;color:var(--slate);line-height:1.55}
+
+/* ===== TWO COLUMN ===== */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:10px}
+.two-col .fact-box{margin-bottom:0;break-inside:avoid}
+
+/* ===== ILLUSTRATION SPOT ===== */
+.spot-illu{text-align:center;padding:20px 0;margin:8px 0}
+.spot-illu svg{max-height:80px;opacity:0.7}
+
+/* ===== QUOTE ===== */
+.pull-quote{font-family:'DM Serif Text',serif;font-size:1rem;color:var(--terracotta);line-height:1.4;padding:8px 0 8px 24px;margin:8px 0;border-left:3px solid var(--gold);font-style:italic}
+
+/* ===== NUMBER STAT ===== */
+.stat-row{display:flex;gap:24px;margin:12px 0;justify-content:center}
+.stat{text-align:center;padding:12px 20px;background:var(--cream);border-radius:10px;min-width:80px}
+.stat-num{font-family:'DM Serif Display',serif;font-size:1.6rem;color:var(--terracotta);display:block}
+.stat-label{font-size:0.65rem;color:var(--slate);text-transform:uppercase;letter-spacing:0.06em}
+
+/* ===== TIMELINE ===== */
+.timeline{position:relative;padding-left:24px;margin:12px 0}
+.timeline::before{content:'';position:absolute;left:6px;top:4px;bottom:4px;width:2px;background:repeating-linear-gradient(to bottom,var(--gold) 0,var(--gold) 4px,transparent 4px,transparent 8px)}
+.timeline-item{position:relative;margin-bottom:10px;padding-left:8px}
+.timeline-item::before{content:'✦';position:absolute;left:-20px;top:0;color:var(--terracotta);font-size:0.7rem}
+.timeline-time{font-size:0.7rem;color:var(--terracotta);font-weight:600;text-transform:uppercase;letter-spacing:0.06em}
+.timeline-text{font-size:0.82rem;color:var(--text-light);line-height:1.4}
+
+/* ===== ACTIVITY CARD ===== */
+.activity{background:var(--cream);border-radius:10px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:10px;font-size:0.8rem;color:var(--text-light);break-inside:avoid}
+.activity .check{width:18px;height:18px;border:2px solid var(--sage);border-radius:4px;flex-shrink:0}
+.activity .emoji{font-size:1.2rem}
+
+/* ===== MAP SPOT ===== */
+.map-spot{background:var(--cream);border-radius:12px;padding:16px;margin:10px 0;text-align:center;border:1px dashed rgba(212,115,94,0.15)}
+.map-spot .pin{font-size:1.8rem;margin-bottom:4px}
+.map-spot .label{font-size:0.75rem;color:var(--slate)}
+
+/* ===== GRID ===== */
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:10px 0}
+.grid-item{background:var(--cream);border-radius:10px;padding:12px;text-align:center}
+.grid-item .icon{font-size:1.8rem;margin-bottom:4px}
+.grid-item .label{font-size:0.7rem;color:var(--slate);line-height:1.3}
+
+/* ===== FUN FACT STRIP ===== */
+.fact-strip{background:linear-gradient(135deg,var(--navy),var(--navy-light));color:var(--white);border-radius:12px;padding:14px 18px;margin:10px 0}
+.fact-strip .big-icon{font-size:2rem;margin-bottom:4px}
+.fact-strip h4{font-family:'DM Serif Text',serif;font-size:0.9rem;margin-bottom:4px;color:var(--gold-light)}
+.fact-strip p{font-size:0.78rem;color:rgba(255,255,255,0.75);line-height:1.5}
+
+/* ===== BACK COVER ===== */
+.back-cover{
+  background:linear-gradient(135deg,#1B2A4A,#2C4270);
+  color:var(--white);text-align:center;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+}
+.back-cover h3{font-family:'DM Serif Display',serif;font-size:1.6rem;margin-bottom:8px}
+.back-cover p{color:rgba(255,255,255,0.5);font-size:0.8rem;max-width:300px;line-height:1.5}
+.back-cover .brand{font-size:0.65rem;color:rgba(255,255,255,0.3);letter-spacing:0.12em;text-transform:uppercase;margin-top:24px}
+
+/* ===== PRINT ===== */
+@media print{
+  body{background:white;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .page{box-shadow:none;margin:0;padding:16mm 18mm 12mm;width:100%;min-height:100vh}
+}
+
+/* ===== FOOTER PAGINATION ===== */
+.page-footer{position:absolute;bottom:8mm;left:20mm;right:20mm;font-size:0.55rem;color:rgba(107,123,141,0.4);display:flex;justify-content:space-between;border-top:1px solid rgba(107,123,141,0.1);padding-top:4px}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ COVER ═══════════ -->
+<div class="page cover">
+  <div class="cover-pattern"></div>
+  <div class="cover-stars"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="cover-badge">✦ Middle Explorer Edition ✦</div>
+  <div class="illustration">
+    <svg viewBox="0 0 120 120" fill="none">
+      <circle cx="60" cy="60" r="55" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+      <path d="M60 10C32 10 10 32 10 60s22 50 50 50" stroke="#D4735E" stroke-width="3" stroke-linecap="round"/>
+      <path d="M60 15C35 15 15 35 15 60s20 45 45 45" stroke="#D4A84B" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 3"/>
+      <circle cx="60" cy="60" r="8" fill="rgba(255,255,255,0.3)"/>
+      <circle cx="60" cy="60" r="4" fill="rgba(255,255,255,0.6)"/>
+      <!-- compass lines -->
+      <line x1="60" y1="40" x2="60" y2="45" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+      <line x1="60" y1="75" x2="60" y2="80" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+      <line x1="40" y1="60" x2="45" y2="60" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+      <line x1="75" y1="60" x2="80" y2="60" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+      <text x="60" y="35" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-size="8" font-family="serif">N</text>
+      <text x="85" y="63" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-size="8" font-family="serif">E</text>
+      <text x="60" y="87" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-size="8" font-family="serif">S</text>
+      <text x="35" y="63" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-size="8" font-family="serif">W</text>
+    </svg>
+  </div>
+  <h1>Brighton <em>&amp;</em><br>the Cotswolds</h1>
+  <div class="subtitle">A Family Adventure</div>
+  <div class="divider"></div>
+  <div class="meta">Ages 9–12 <span>•</span> 148 pages <span>•</span> Summer 2026</div>
+  <div style="margin-top:auto;font-size:0.65rem;color:rgba(255,255,255,0.25);letter-spacing:0.08em;text-transform:uppercase">Passport Pages — The world is their story.</div>
+</div>
+
+<!-- ═══════════ WELCOME ═══════════ -->
+<div class="page">
+  <div class="wave-top">
+    <svg viewBox="0 0 800 60" preserveAspectRatio="none"><path d="M0,40 C200,0 400,60 800,20 L800,0 L0,0 Z" fill="#F0EAE0" opacity="0.3"/></svg>
+  </div>
+  <div class="cloud cloud-1">☁️</div>
+  <div class="chapter-number">✦ Welcome</div>
+  <h2>Hello, <span class="hl">Adventurers!</span></h2>
+  <div class="chapter-line"></div>
+  <div class="spot-illu">
+    <svg viewBox="0 0 200 60" width="200" height="60">
+      <text x="20" y="35" font-size="28">✈️</text>
+      <text x="60" y="35" font-size="24">🗺️</text>
+      <text x="100" y="35" font-size="28">🏰</text>
+      <text x="140" y="35" font-size="24">🌊</text>
+      <line x1="18" y1="45" x2="175" y2="45" stroke="#D4A84B" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.4"/>
+    </svg>
+  </div>
+  <div class="story">
+    You are about to explore a country packed with more history, weirdness, and wonder per <em>square mile</em> than almost anywhere on Earth. Britain has Roman walls, medieval castles, secret tunnels, haunted pubs, and a beach made of <strong>millions of pebbles</strong> instead of sand. This book is your guide to all the secret stories hiding in the places you will visit.
+  </div>
+  <div class="fact-strip">
+    <div class="big-icon">🇬🇧</div>
+    <h4>England by the Numbers</h4>
+    <p>England is smaller than the state of Louisiana but has over 1,000 years of castle history, 30 million tourists per year, and a river called "Windrush" that sounds like it belongs in a fantasy novel.</p>
+  </div>
+  <div class="story" style="margin-top:10px">
+    <strong>Before we go, three golden rules:</strong>
+  </div>
+  <div class="grid-3">
+    <div class="grid-item"><div class="icon">🚗</div><div class="label">They drive on the <strong>LEFT</strong> — look right, then left before crossing!</div></div>
+    <div class="grid-item"><div class="icon">🇬🇧</div><div class="label">The UK = England + Scotland + Wales + Northern Ireland</div></div>
+    <div class="grid-item"><div class="icon">☔</div><div class="label">It might rain 4 times in one day. That's normal. Embrace it!</div></div>
+  </div>
+  <div class="page-footer"><span>Passport Pages</span><span>2</span></div>
+</div>
+
+<!-- ═══════════ BRIGHTON ═══════════ -->
+<div class="page">
+  <div class="cloud cloud-1">🌊</div>
+  <div class="chapter-number">✦ Day 1–4</div>
+  <h2>Brighton — <span class="hl">London-by-the-Sea</span></h2>
+  <div class="chapter-line"></div>
+
+  <div class="spot-illu">
+    <svg viewBox="0 0 300 60" width="300" height="60">
+      <text x="0" y="35" font-size="30">🏖️</text>
+      <text x="50" y="35" font-size="26">🎡</text>
+      <text x="100" y="35" font-size="28">🐟</text>
+      <text x="150" y="35" font-size="24">🦀</text>
+      <text x="195" y="35" font-size="30">⛵</text>
+      <text x="245" y="35" font-size="26">🏛️</text>
+      <line x1="0" y1="48" x2="290" y2="48" stroke="#D4735E" stroke-width="1.5" stroke-dasharray="5 3" opacity="0.3"/>
+    </svg>
+  </div>
+
+  <div class="pull-quote">"The sea is in Brighton's bones. It's been a seaside escape since the days of King George IV, who built a palace that looks like it escaped from a fairy tale."</div>
+
+  <div class="story">
+    <strong>Here is something that surprises almost everyone:</strong> Brighton Beach doesn't have sand. It is covered in millions of smooth, round <em>pebbles</em>. When the tide comes in, the waves make a strange, rattling sound as they pull the stones back. Locals call it the <strong>"shingle music"</strong> — and people come from all over the world just to hear it.
+  </div>
+
+  <div class="two-col">
+    <div class="fact-box orange">
+      <div class="fact-icon">🐚</div>
+      <div class="fact-content">
+        <div class="fact-title">Why Pebbles, Not Sand?</div>
+        <div class="fact-text">Brighton sits on a layer of chalk from the South Downs. Waves smash the chalk into dust that washes away, leaving only flint pebbles. Some of these stones have been rolling in the English Channel since before the Roman Empire.</div>
+      </div>
+    </div>
+    <div class="fact-box gold">
+      <div class="fact-icon">🎡</div>
+      <div class="fact-content">
+        <div class="fact-title">The Palace Pier</div>
+        <div class="fact-text">Built in 1899. It's exactly 1,760 feet long — one-third of a mile. During WWII, soldiers REMOVED the middle section of the pier to stop enemy boats from landing on it.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fact-box blue">
+    <div class="fact-icon">👑</div>
+    <div class="fact-content">
+      <div class="fact-title">The Royal Pavilion — A Palace from Another World</div>
+      <div class="fact-text">King George IV built this bizarre masterpiece in the early 1800s. It looks like an Indian temple on the outside, but inside it's decorated like a Chinese emperor's palace. Why? Because King George thought it was <em>fun</em>. His dining room table could seat 80 people and had a trapdoor so servants could swap dishes without being seen. Servants literally popped up through the floor!</div>
+    </div>
+  </div>
+
+  <div class="fact-box green">
+    <div class="fact-icon">🍟</div>
+    <div class="fact-content">
+      <div class="fact-title">The Fish &amp; Chip Story</div>
+      <div class="fact-text">Brighton claims one of the first fish-and-chip shops in England. This combo became a national obsession in the 1860s when railways made it possible to get fresh fish from coast to city fast. During both World Wars, fish and chips were among the ONLY foods not rationed. The government knew people needed comfort food to survive wartime. A nation runs on fried fish!</div>
+    </div>
+  </div>
+
+  <div class="page-footer"><span>Passport Pages — Brighton &amp; the Cotswolds</span><span>3</span></div>
+</div>
+
+<!-- ═══════════ OXFORD ═══════════ -->
+<div class="page">
+  <div class="cloud cloud-2">📚</div>
+  <div class="chapter-number">✦ Travel Day — July 21</div>
+  <h2>Oxford — <span class="hl">Dreaming Spires</span></h2>
+  <div class="chapter-line"></div>
+
+  <div class="spot-illu">
+    <svg viewBox="0 0 250 50" width="250" height="50">
+      <text x="0" y="30" font-size="24">🏛️</text>
+      <text x="45" y="30" font-size="22">🛶</text>
+      <text x="90" y="30" font-size="26">📜</text>
+      <text x="140" y="30" font-size="22">🍺</text>
+      <text x="185" y="30" font-size="24">🧠</text>
+    </svg>
+  </div>
+
+  <div class="pull-quote">"Oxford is older than the Aztec Empire. Older than the printing press. When students first walked these halls, the Magna Carta was only 27 years old."</div>
+
+  <div class="two-col">
+    <div class="fact-box orange">
+      <div class="fact-icon">🍺</div>
+      <div class="fact-content">
+        <div class="fact-title">The Bear Inn (Since 1242)</div>
+        <div class="fact-text">Oxford's oldest pub opened just 27 years after the Magna Carta. Students have been eating here for 780 years — since before Shakespeare was born, before the printing press, before America was discovered. Imagine all the conversations those walls have heard.</div>
+      </div>
+    </div>
+    <div class="fact-box gold">
+      <div class="fact-icon">🛶</div>
+      <div class="fact-content">
+        <div class="fact-title">Punting — Oxford's Water Sport</div>
+        <div class="fact-text">You stand on a flat boat and push it along with a long pole. Looks easy. Almost everyone falls in on their first try. The tradition is 200 years old. Magdalen (pronounced MAUD-len) Bridge is where you rent them. Keep an eye out for the giant carp and turtles that live in the river!</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fact-box blue">
+    <div class="fact-icon">📚</div>
+    <div class="fact-content">
+      <div class="fact-title">The Bodleian Library — 13 Million Secrets</div>
+      <div class="fact-text">Founded in 1602, this library has over 13 MILLION books stored across 80 miles of underground shelves. Here's the wild part: by law, every single book published in the UK must be given to the Bodleian for free. That means every book in your house — somewhere in those tunnels, there's a copy. The tunnels are so long that librarians use bicycles to get around.</div>
+    </div>
+  </div>
+
+  <div class="fact-box green">
+    <div class="fact-icon">🏪</div>
+    <div class="fact-content">
+      <div class="fact-title">The Covered Market (1774)</div>
+      <div class="fact-text">This indoor market has been selling food, flowers, and gifts for 250 years. Some butchers still use the same marble slabs their great-grandfathers used. It was originally built to stop street sellers from blocking traffic with their carts. The market has a secret: look up and you will see original Victorian skylights that have been there since day one.</div>
+    </div>
+  </div>
+
+  <div class="page-footer"><span>Passport Pages — Brighton &amp; the Cotswolds</span><span>4</span></div>
+</div>
+
+<!-- ═══════════ COTSWOLDS INTRO ═══════════ -->
+<div class="page">
+  <div class="cloud cloud-3">🌿</div>
+  <div class="chapter-number">✦ Days 5–9</div>
+  <h2>The Cotswolds — <span class="hl">England's Golden Treasure</span></h2>
+  <div class="chapter-line"></div>
+
+  <div class="spot-illu">
+    <svg viewBox="0 0 300 50" width="300" height="50">
+      <text x="0" y="30" font-size="26">🏘️</text>
+      <text x="50" y="30" font-size="22">🐑</text>
+      <text x="100" y="30" font-size="24">🌄</text>
+      <text x="155" y="30" font-size="28">🧀</text>
+      <text x="205" y="30" font-size="22">🏰</text>
+      <text x="255" y="30" font-size="24">🌳</text>
+    </svg>
+  </div>
+
+  <div class="story">
+    The Cotswolds are 800 square miles of rolling hills, honey-colored limestone villages, and stone walls that have stood for centuries. The name comes from "cots" (sheep shelters) and "wolds" (gentle hills). But really, it's the place where <strong>time slowed down</strong>. Most villages still look exactly like they did 300 years ago. There are no neon signs, no fast food chains — just winding lanes, ancient pubs, and the sound of sheep.
+  </div>
+
+  <div class="fact-strip">
+    <div class="big-icon">🐑</div>
+    <h4>Wool = Money. Lots of It.</h4>
+    <p>In the Middle Ages, Cotswold wool was England's most valuable export. A single wool merchant could become as rich as a duke. The phrase "cotton to" (meaning "to get along with") actually comes from old wool-making — "cotted" wool naturally stuck together. The churches you will visit were all built with wool money.</p>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-time">July 21 — Evening</div>
+      <div class="timeline-text">Arrive in Moreton-in-Marsh after driving from Oxford. Your home base for 4 nights.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">July 22 — Diddly Squat + Bibury + Stow</div>
+      <div class="timeline-text">Morning at Clarkson's farm shop. Afternoon at Arlington Row (the passport village!). Evening exploring Stow-on-the-Wold.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">July 23 — Village Hopping</div>
+      <div class="timeline-text">Bourton-on-the-Water, Lower & Upper Slaughter, then Stratford-upon-Avon for Shakespeare's hometown.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">July 24 — Towers + Gardens</div>
+      <div class="timeline-text">Broadway Tower (and its secret Cold War bunker!), Hidcote Garden, Blenheim Palace.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">July 25 — Castle Combe</div>
+      <div class="timeline-text">"The prettiest village in England." Then drive to London.</div>
+    </div>
+  </div>
+
+  <div class="page-footer"><span>Passport Pages — Brighton &amp; the Cotswolds</span><span>5</span></div>
+</div>
+
+<!-- ═══════════ MORETON + DIDDLY SQUAT ═══════════ -->
+<div class="page">
+  <div class="chapter-number">✦ July 22</div>
+  <h2>Moreton &amp; <span class="hl">Diddly Squat</span></h2>
+  <div class="chapter-line"></div>
+
+  <div class="fact-box orange">
+    <div class="fact-icon">🏪</div>
+    <div class="fact-content">
+      <div class="fact-title">The Tuesday Market — Since 1226!</div>
+      <div class="fact-text">Every Tuesday for 800 YEARS, the High Street of Moreton-in-Marsh has been filled with over 200 stalls selling local produce, antiques, and crafts. King Henry III granted the town a royal charter in 1226, and they haven't missed a Tuesday since. That's 800 years of people haggling over cheese and vegetables. Your Tuesday market is a piece of living history.</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="fact-box gold">
+      <div class="fact-icon">🚜</div>
+      <div class="fact-content">
+        <div class="fact-title">Diddly Squat Farm Shop</div>
+        <div class="fact-text">Jeremy Clarkson (the car guy from Top Gear) bought this farm in 2008 and discovered he had NO IDEA how to run it. The TV show follows his hilarious disasters. The name? "Diddly Squat" means absolutely nothing — which is what Clarkson knew about farming!</div>
+      </div>
+    </div>
+    <div class="fact-box green">
+      <div class="fact-icon">🌾</div>
+      <div class="fact-content">
+        <div class="fact-title">The Farmer's Puppy</div>
+        <div class="fact-text">Since all July restaurant reservations are full, you'll eat at the food trucks instead. The Farmer's Puppy (open till 3pm) and The Farmer's Dough (pizza till 5pm) serve amazing food right at the farm.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat"><span class="stat-num">800</span><span class="stat-label">Years of Tuesday Markets</span></div>
+    <div class="stat"><span class="stat-num">200+</span><span class="stat-label">Stalls Every Week</span></div>
+    <div class="stat"><span class="stat-num">1226</span><span class="stat-label">Royal Charter Granted</span></div>
+  </div>
+
+  <div class="page-footer"><span>Passport Pages — Brighton &amp; the Cotswolds</span><span>6</span></div>
+</div>
+
+<!-- ═══════════ BIBURY ═══════════ -->
+<div class="page">
+  <div class="cloud cloud-1">🏘️</div>
+  <div class="chapter-number">✦ July 22</div>
+  <h2>Bibury — <span class="hl">The Passport Village</span></h2>
+  <div class="chapter-line"></div>
+
+  <div class="spot-illu">
+    <svg viewBox="0 0 250 50" width="250" height="50">
+      <text x="0" y="30" font-size="26">🏡</text>
+      <text x="50" y="30" font-size="22">🐑</text>
+      <text x="100" y="30" font-size="24">📖</text>
+      <text x="155" y="30" font-size="28">🪪</text>
+      <text x="210" y="30" font-size="22">🎬</text>
+    </svg>
+  </div>
+
+  <div class="pull-quote">"Arlington Row is the most photographed street in England. It appears on the inside cover of EVERY British passport. If you hold a UK passport, these cottages are in your pocket."</div>
+
+  <div class="fact-box blue">
+    <div class="fact-icon">🏡</div>
+    <div class="fact-content">
+      <div class="fact-title">Arlington Row — Built 1380</div>
+      <div class="fact-text">These honey-colored stone cottages were built 640 years ago as a MONASTIC WOOL STORE. Monks stored their wool here before selling it across Europe. In the 1600s, they were converted into weavers' cottages. Cloth was hung out to dry on "The Rack Isle" opposite — the field is still there. Today, they are a Grade I listed building owned by the National Trust and protected forever.</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="fact-box gold">
+      <div class="fact-icon">🎬</div>
+      <div class="fact-content">
+        <div class="fact-title">Movie Star Cottages</div>
+        <div class="fact-text">Arlington Row has been in Stardust (2007), Bridget Jones's Diary (2001), and countless TV shows. The cottages are so famous that the National Trust had to put up signs asking tourists not to knock on the doors of the people who still live there!</div>
+      </div>
+    </div>
+    <div class="fact-box green">
+      <div class="fact-icon">🪪</div>
+      <div class="fact-content">
+        <div class="fact-title">Passport Fame</div>
+        <div class="fact-text">Since 2000, Arlington Row has appeared on the inside cover of every UK passport. Over 50 million passports have been printed with this image. When you enter the UK, border agents check a page that shows the very place you might visit!</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer"><span>Passport Pages — Brighton &amp; the Cotswolds</span><span>7</span></div>
+</div>
+
+<!-- ═══════════ STOW + BOURTON ═══════════ -->
+<div class="page">
+  <div class="chapter-number">✦ July 22–23</div>
+  <h2>Stow &amp; <span class="hl">Bourton</span></h2>
+  <div class="chapter-line"></div>
+
+  <div class="fact-box orange">
+    <div class="fact-icon">⛪</div>
+    <div class="fact-content">
+      <div class="fact-title">St Edward's Church — The Doors of Durin?</div>
+      <div class="fact-text">The north door of this ancient church is framed by two massive yew trees whose gnarled roots arch over the entrance like a doorway from a fantasy novel. Many visitors say it looks exactly like the Doors of Durin from Lord of the Rings. Tolkien was known to have visited the Cotswolds, though nobody knows for sure if this inspired him. The church itself dates to BEFORE 1086 — it's listed in the Domesday Book, which records "30 villagers and a church worth 1000 eels."</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="fact-box gold">
+      <div class="fact-icon">🌊</div>
+      <div class="fact-content">
+        <div class="fact-title">Bourton-on-the-Water</div>
+        <div class="fact-text">Called the "Venice of the Cotswolds" for its five low stone bridges crossing the River Windrush. Kids splash in the river on sunny days. The Model Village is a 1/9th scale replica of the village itself — and the model contains a model of the model!</div>
+      </div>
+    </div>
+    <div class="fact-box green">
+      <div class="fact-icon">🐸</div>
+      <div class="fact-content">
+        <div class="fact-title">Dragonfly Maze</div>
+        <div class="fact-text">A stone-and-hedge maze built in 1995. You follow clues carved into stones to find a hidden golden dragonfly. Fastest time: 4 minutes. Average: 25 minutes of getting lost!</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fact-box blue">
+    <div class="fact-icon">⚔️</div>
+    <div class="fact-content">
+      <div class="fact-title">The Battle of Stow (1646)</div>
+      <div class="fact-text">During the English Civil War, Stow-on-the-Wold was the site of the last major battle. The Royalist army was cornered in the town and defeated. The prisoners were held in St Edward's Church. If you look closely at the church walls, you can still see marks from the fighting.</div>
+    </div>
+  </div>
+
+  <div class="page-footer"><span>Passport Pages — Brighton &amp; the Cotswolds</span><span>8</span></div>
+</div>
+
+<!-- ═══════════ STRATFORD ═══════════ -->
+<div class="page">
+  <div class="cloud cloud-2">🎭</div>
+  <div class="chapter-number">✦ July 23</div>
+  <h2>Stratford-upon-Avon — <span class="hl">Shakespeare's Town</span></h2>
+  <div class="chapter-line"></div>
+
+  <div class="spot-illu">
+    <svg viewBox="0 0 300 50" width="300" height="50">
+      <text x="0" y="30" font-size="28">🎭</text>
+      <text x="50" y="30" font-size="22">✍️</text>
+      <text x="100" y="30" font-size="24">📝</text>
+      <text x="155" y="30" font-size="26">🦋</text>
+      <text x="210" y="30" font-size="22">⛪</text>
+      <text x="258" y="30" font-size="20">🛶</text>
+    </svg>
+  </div>
+
+  <div class="pull-quote">"William Shakespeare was born here in 1564. He went to school here. He is buried here. And he invented over 1,700 words that you use every single day."</div>
+
+  <div class="two-col">
+    <div class="fact-box orange">
+      <div class="fact-icon">✍️</div>
+      <div class="fact-content">
+        <div class="fact-title">Words Shakespeare Invented</div>
+        <div class="fact-text">Eyeball, gossip, bedroom, lonely, swagger, addiction, fashionable, generous, gloomy, majestic, and hundreds more. If a word didn't exist, he just MADE IT UP. Try keeping count of how many "Shakespeare words" you hear in a day.</div>
+      </div>
+    </div>
+    <div class="fact-box gold">
+      <div class="fact-icon">🎓</div>
+      <div class="fact-content">
+        <div class="fact-title">His Classroom Still Exists</div>
+        <div class="fact-text">Shakespeare's Schoolroom & Guildhall is the exact classroom where he studied Latin and Greek in the 1570s. You can sit at the same desks. The school has been operating for over 600 years. Imagine the graffiti!</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="fact-box green">
+      <div class="fact-icon">📊</div>
+      <div class="fact-content">
+        <div class="fact-title">Shakespeare by the Numbers</div>
+        <div class="fact-text">37 plays, 154 sonnets, 1,700+ invented words. Translated into every major language. More performances than any other playwright in history — combined!</div>
+      </div>
+    </div>
+    <div class="fact-box blue">
+      <div class="fact-icon">🦋</div>
+      <div class="fact-content">
+        <div class="fact-title">Stratford Butterfly Farm</div>
+        <div class="fact-text">Hundreds of tropical butterflies fly freely around you. Species from South America, Africa, and Asia. Some butterflies live only 2 weeks. Others (like the Blue Morpho) live 6 months. One of the largest butterfly displays in the UK.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="map-spot">
+    <div class="pin">⛪</div>
+    <div class="label">Holy Trinity Church — Shakespeare's grave. He wrote his own epitaph cursing anyone who moves his bones: "Blest be the man that spares these stones, And curst be he that moves my bones."</div>
+  </div>
+
+  <div class="page-footer"><span>Passport Pages — Brighton &amp; the Cotswolds</span><span>9</span></div>
+</div>
+
+<!-- ═══════════ BROADWAY + HIDCOTE ═══════════ -->
+<div class="page">
+  <div class="chapter-number">✦ July 24</div>
+  <h2>Broadway Tower &amp; <span class="hl">Hidden Wonders</span></h2>
+  <div class="chapter-line"></div>
+
+  <div class="pull-quote">"Broadway Tower stands 1,024 feet above the Cotswolds — the second-highest point. On a clear day, you can see 16 counties from the top. That's one-fifth of ALL of England."</div>
+
+  <div class="two-col">
+    <div class="fact-box orange">
+      <div class="fact-icon">🏰</div>
+      <div class="fact-content">
+        <div class="fact-title">A Folly Built for Love</div>
+        <div class="fact-text">Capability Brown designed this 65-foot tower in 1794. It was built for Lady Coventry, who wanted to know if a beacon fire on the hill could be seen from her house 15 miles away. (Spoiler: yes, it could.) The tower is actually a Saxon-style castle-folly with real rooms, spiral staircases, and a rooftop view that will blow your mind.</div>
+      </div>
+    </div>
+    <div class="fact-box gold">
+      <div class="fact-icon">☢️</div>
+      <div class="fact-content">
+        <div class="fact-title">The Secret Cold War Bunker</div>
+        <div class="fact-text">Hidden inside Broadway Hill is a nuclear bunker built during the Cold War. If nuclear war started, a team of observers would crawl in to measure radiation levels. They had 3 weeks of food, a Geiger counter, and a telephone. That's it. The bunker is now a museum — you can squeeze inside and see what it was like to wait out the apocalypse with nothing but canned beans.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="fact-box green">
+      <div class="fact-icon">🌺</div>
+      <div class="fact-content">
+        <div class="fact-title">Hidcote Manor Garden</div>
+        <div class="fact-text">One of England's greatest gardens, designed by American horticulturist Lawrence Johnston. It's like a series of outdoor rooms — each one with a different color, smell, and mood. Hedge mazes, rare plants, and secret corners everywhere.</div>
+      </div>
+    </div>
+    <div class="fact-box blue">
+      <div class="fact-icon">🏛️</div>
+      <div class="fact-content">
+        <div class="fact-title">Blenheim Palace?</div>
+        <div class="fact-text">If you decide to go: this is the only non-royal palace in England. Birthplace of Winston Churchill. It has 187 rooms, 2,000 acres of parkland, and a lake designed by Capability Brown. The palace was a gift from Queen Anne to the Duke of Marlborough for winning a war in 1704.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer"><span>Passport Pages — Brighton &amp; the Cotswolds</span><span>10</span></div>
+</div>
+
+<!-- ═══════════ CASTLE COMBE ═══════════ -->
+<div class="page">
+  <div class="chapter-number">✦ July 25</div>
+  <h2>Castle Combe — <span class="hl">The Prettiest Village</span></h2>
+  <div class="chapter-line"></div>
+
+  <div class="spot-illu">
+    <svg viewBox="0 0 250 50" width="250" height="50">
+      <text x="0" y="30" font-size="28">🏡</text>
+      <text x="55" y="30" font-size="22">🎬</text>
+      <text x="110" y="30" font-size="24">⛲</text>
+      <text x="165" y="30" font-size="26">📽️</text>
+      <text x="210" y="30" font-size="20">🌉</text>
+    </svg>
+  </div>
+
+  <div class="pull-quote">"Castle Combe is often called 'the prettiest village in England.' It has no traffic lights, no street lamps — just gas lamps and a medieval market cross that has stood for 700 years."</div>
+
+  <div class="fact-box orange">
+    <div class="fact-icon">🎬</div>
+    <div class="fact-content">
+      <div class="fact-title">A Village That Looks Like a Movie Set (Because It Is)</div>
+      <div class="fact-text">Castle Combe has been the backdrop for dozens of films including Dr. Dolittle (1967), The Wolfman, Stardust, and the TV series Poldark. The village council charges film crews for the privilege — and uses the money to maintain the ancient buildings. If it looks fake, that's because it's so perfectly preserved it doesn't look real. But it is.</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="fact-box gold">
+      <div class="fact-icon">⛲</div>
+      <div class="fact-content">
+        <div class="fact-title">The Market Cross (1350)</div>
+        <div class="fact-text">Nobody knows exactly who built this stone cross in the village center. It marks where medieval merchants paid tolls to sell their goods. On market days, the cross was surrounded by stalls selling everything from wool to swords.</div>
+      </div>
+    </div>
+    <div class="fact-box green">
+      <div class="fact-icon">🌉</div>
+      <div class="fact-content">
+        <div class="fact-title">No Modern Additions</div>
+        <div class="fact-text">Castle Combe has no new buildings — everything is original. The last new house was built in the 1600s. The village is a protected conservation area, meaning it will look exactly like this for another 400 years.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer"><span>Passport Pages — Brighton &amp; the Cotswolds</span><span>11</span></div>
+</div>
+
+<!-- ═══════════ ACTIVITIES ═══════════ -->
+<div class="page">
+  <div class="chapter-number">✦ Your Mission</div>
+  <h2>The Cotswolds <span class="hl">Challenge</span></h2>
+  <div class="chapter-line"></div>
+
+  <div class="story">
+    <strong>Your mission, should you choose to accept it:</strong> Find and complete as many of these challenges as you can during your trip. Check each one off when you do it!
+  </div>
+
+  <div class="activity"><div class="check"></div><span class="emoji">🪨</span> Find the smoothest, flattest pebble on Brighton Beach</div>
+  <div class="activity"><div class="check"></div><span class="emoji">📸</span> Take a photo of Arlington Row — you're holding the passport!</div>
+  <div class="activity"><div class="check"></div><span class="emoji">🧀</span> Try Cotswold cheese and rate it 1 to 10</div>
+  <div class="activity"><div class="check"></div><span class="emoji">🛶</span> Spot someone falling off a punt in Oxford</div>
+  <div class="activity"><div class="check"></div><span class="emoji">🗣️</span> Learn one British slang word and use it</div>
+  <div class="activity"><div class="check"></div><span class="emoji">🌿</span> Find the hidden golden dragonfly at the Dragonfly Maze</div>
+  <div class="activity"><div class="check"></div><span class="emoji">🏰</span> Count the stone bridges at Bourton-on-the-Water</div>
+  <div class="activity"><div class="check"></div><span class="emoji">✍️</span> Invent one new word in the style of Shakespeare</div>
+  <div class="activity"><div class="check"></div><span class="emoji">🐑</span> Spot a real Cotswold sheep (curly wool counts)</div>
+  <div class="activity"><div class="check"></div><span class="emoji">📷</span> Take a photo from the top of Broadway Tower</div>
+  <div class="activity"><div class="check"></div><span class="emoji">🍟</span> Eat fish and chips by the sea in Brighton</div>
+  <div class="activity"><div class="check"></div><span class="emoji">📝</span> Write one journal entry about your favorite moment</div>
+
+  <div style="margin-top:12px;padding:10px;background:var(--cream);border-radius:10px;text-align:center;font-size:0.75rem;color:var(--slate)">
+    ✦ Completed: _____ out of 12 ✦
+  </div>
+
+  <div class="page-footer"><span>Passport Pages — Brighton &amp; the Cotswolds</span><span>12</span></div>
+</div>
+
+<!-- ═══════════ QUICK FACTS ═══════════ -->
+<div class="page">
+  <div class="chapter-number">✦ Cheat Sheet</div>
+  <h2>Quick-Fire <span class="hl">Fun Facts</span></h2>
+  <div class="chapter-line"></div>
+
+  <div class="grid-3">
+    <div class="grid-item"><div class="icon">🏖️</div><div class="label"><strong>Brighton Beach</strong><br>Millions of pebbles. The shingle music is the sound of the waves pulling stones.</div></div>
+    <div class="grid-item"><div class="icon">👑</div><div class="label"><strong>Royal Pavilion</strong><br>Looks Indian outside, Chinese inside. Trapdoor dining table for 80 people.</div></div>
+    <div class="grid-item"><div class="icon">🎡</div><div class="label"><strong>Palace Pier</strong><br>1,760 feet. Middle removed in WWII to stop enemy boats.</div></div>
+    <div class="grid-item"><div class="icon">📚</div><div class="label"><strong>Bodleian Library</strong><br>13M books. 80 miles of shelves. Bicycle tunnels.</div></div>
+    <div class="grid-item"><div class="icon">🏡</div><div class="label"><strong>Arlington Row</strong><br>1380. Wool store. On every UK passport. In movies.</div></div>
+    <div class="grid-item"><div class="icon">🚜</div><div class="label"><strong>Diddly Squat</strong><br>Jeremy Clarkson's farm. Name means "nothing." He knew nothing.</div></div>
+    <div class="grid-item"><div class="icon">⛪</div><div class="label"><strong>St Edward's</strong><br>Mentioned in 1086 Domesday Book. Doors look like Lord of the Rings.</div></div>
+    <div class="grid-item"><div class="icon">🎭</div><div class="label"><strong>Shakespeare</strong><br>1,700+ words invented. Classroom still exists.</div></div>
+    <div class="grid-item"><div class="icon">☢️</div><div class="label"><strong>Broadway Bunker</strong><br>Cold War. 3 weeks of food. One Geiger counter. Canned beans.</div></div>
+  </div>
+
+  <div class="fact-strip" style="margin-top:12px">
+    <div class="big-icon">⭐</div>
+    <h4>Remember: The best souvenir is a good story.</h4>
+    <p>You don't need to bring anything home but memories. Every castle you see, every fact you learn, every pebble you skip across Brighton Beach — those are the things that last forever. Have the best adventure.</p>
+  </div>
+
+  <div class="page-footer"><span>Passport Pages — Brighton &amp; the Cotswolds</span><span>13</span></div>
+</div>
+
+<!-- ═══════════ BACK COVER ═══════════ -->
+<div class="page back-cover">
+  <div class="cover-pattern"></div>
+  <div style="position:relative;z-index:1">
+  <div style="font-size:3rem;margin-bottom:16px">🗺️</div>
+  <h3>The world is their story.</h3>
+  <p>Every destination, every age, every language. Beautiful travel books that make the world come alive for kids.</p>
+  <div class="brand">Passport Pages — passportpages.com</div>
+  </div>
+</div>
+
+<script>
+// For print: wait for fonts, then print
+document.fonts.ready.then(() => {
+  if (window.location.search.includes('print')) {
+    window.print();
+  }
+});
+</script>
+</body>
+</html>
